@@ -1,0 +1,183 @@
+/* Maquillaje de la página */
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #222;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* contenedor quee esté centrado */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* header */
+header {
+  background: #2c3e50;
+  color: #fff;
+}
+
+/* contenedor dentro del header */
+header .container {
+  display: block;
+  padding: 12px 0;
+}
+
+/* logo */
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 20px;
+}
+
+/* enlaces como Dios me dió a entender xd */
+nav {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* enlaces del nav */
+nav a {
+  color: #ecf0f1;
+  text-decoration: none;
+  padding: 6px 10px;
+  display: inline-block;
+  font-size: 14px;
+}
+
+/* efecto hover en los enlaces */
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* sigo sin saber bien que es un hero :/ */
+.hero {
+  background: #e67e22;
+  color: #fff;
+  padding: 36px 0;
+  margin-bottom: 16px;
+}
+
+/* titulo grande en el hero */
+.hero h1 {
+  margin: 0 0 8px 0;
+  font-size: 28px;
+}
+
+/* boton de llamada a la accion */
+.cta { 
+  background: #fff;
+  color: #e67e22;
+  padding: 8px 12px;
+  text-decoration: none;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+/* efecto hover en el boton */
+.cta:hover {
+  opacity: 0.9; /* efecto hover () */
+}
+
+/* secciones */
+main h2 {
+  font-size: 20px;
+  margin-top: 16px;
+}
+
+/* imagenes dentro de las tarjetas */
+.card-list {
+  display: flex;
+  flex-wrap: wrap; /* para que las tarjetas se ajusten */
+  gap: 20px;
+  justify-content: space-between; /* espacio entre tarjetas */
+}
+
+/* tarjetas para que queden a la par, masomenos */
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: calc(33.333% - 14px); /* tres tarjetas por fila con espacio */
+  margin: 0 0 20px 0; /* margen inferior */
+  display: inline-block; 
+  vertical-align: top; /* para que queden alineadas arriba */
+  text-align: left;
+  box-sizing: border-box; /* para que el padding no afecte el ancho */
+}
+
+/* ajustes de las imagenes dentro de las tarjetas */
+.card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 8px;
+}
+
+/* titulos y parrafos dentro de las tarjetas */
+.card h3 {
+  margin: 6px 0;
+  font-size: 16px;
+}
+
+/* parrafos dentro de las tarjetas */
+.card p {
+  font-size: 14px;
+  margin: 6px 0;
+}
+
+/* notas */
+.note {
+  background: #fff;
+  border-left: 4px solid #2c3e50;
+  padding: 8px;
+  margin: 8px 0;
+}
+
+/* formulario que no sirve pq no hay back xd */
+form input[type="text"],
+form input[type="email"],
+form textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 8px;
+}
+
+/* boton de submit */
+form input[type="submit"] {
+  padding: 8px 14px;
+  border: none;
+  background: #2c3e50;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* efecto hover en el boton */
+form input[type="submit"]:hover {
+  opacity: 0.9;
+}
+
+/* footer */
+footer {
+  background: #222;
+  color: #ccc;
+  padding: 12px 0;
+  margin-top: 20px;
+  font-size: 13px;
+  text-align: center;
+}
+
+footer a { color: #fff; text-decoration: none; }
+
+/* hr simple */
+hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 16px 0;
+}
+
