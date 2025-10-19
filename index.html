@@ -1,127 +1,145 @@
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Academia del Amigo - Proyecto</title>
-  <link rel="stylesheet" href="css/styles.css">
+<!doctype html> <!-- Document type declaration for HTML5 -->
+<html lang="en"> <!-- Root HTML element with English language attribute -->
+<head> <!-- Head section contains metadata and external resources -->
+  <meta charset="utf-8" /> <!-- Character encoding set to UTF-8 for international character support -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive viewport meta tag for mobile devices -->
+  <title>Amigo's Academy - Project</title> <!-- Browser tab title -->
+  <link rel="stylesheet" href="css/styles.css"> <!-- Link to external CSS stylesheet -->
 </head>
-<body>
+<body> <!-- Body section contains all visible page content -->
 
-  <header id="top">
-    <div class="container">
-      <div class="logo">Academia del Amigo</div>
-      <nav>
-        <a href="#about">Inicio</a>
-        <a href="#courses">Cursos</a>
-        <a href="#team">Equipo</a>
-        <a href="#contact">Contacto</a>
-      </nav>
-    </div>
-  </header>
+  <!-- Main navigation header with logo and menu links -->
+  <header id="top"> <!-- Header element with ID "top" for anchor linking -->
+    <div class="container"> <!-- Container div for layout and styling -->
+      <div class="logo">Amigo's Academy</div> <!-- Logo/brand name display -->
+      <nav> <!-- Navigation container for menu links -->
+        <a href="#about">Home</a> <!-- Navigation link to About section -->
+        <a href="#courses">Courses</a> <!-- Navigation link to Courses section -->
+        <a href="#team">Team</a> <!-- Navigation link to Team section -->
+        <a href="#contact">Contact</a> <!-- Navigation link to Contact section -->
+      </nav> <!-- End of navigation -->
+    </div> <!-- End of container -->
+  </header> <!-- End of header -->
 
-  <section class="hero">
-    <div class="container">
-      <h1>Aprende gratis, a tu propio ritmo.</h1>
-      <p>Plataforma educativa 100% gratuita inspirada en modelos educativos online como Khan Academy y Udemy.</p>
-      <p><a class="cta" href="#courses">Ver cursos</a></p>
-    </div>
-  </section>
+  <!-- Hero section with main headline and call-to-action -->
+  <section class="hero"> <!-- Hero section with class "hero" for styling -->
+    <div class="container"> <!-- Container div for content layout -->
+      <h1>Learn for free, at your own pace.</h1> <!-- Main heading/tagline -->
+      <p>100% free educational platform inspired by online educational models like Khan Academy and Udemy.</p> <!-- Descriptive paragraph about the platform -->
+      <p><a class="cta" href="#courses">View courses</a></p> <!-- Call-to-action button linking to courses section -->
+    </div> <!-- End of container -->
+  </section> <!-- End of hero section -->
 
-  <main class="container">
-    <section id="about">
-      <h2>¿Qué es esto?</h2>
-      <p>Un proyecto para promover el Objetivo de Desarrollo Sostenible #4: Educación de calidad para todos. 
-         Nuestra meta es crear cursos gratuitos, rutas de aprendizaje y una extensa comunidad de apoyo.</p>
-      <hr>
-    </section>
+  <main class="container"> <!-- Main content area with container class for layout -->
+    
+    <!-- About section explaining the project's mission -->
+    <section id="about"> <!-- About section with ID for anchor linking -->
+      <h2>What is this?</h2> <!-- Section heading -->
+      <p>A project to promote Sustainable Development Goal #4: Quality education for all. <!-- Paragraph explaining project purpose -->
+         Our goal is to create free courses, learning paths, and an extensive support community.</p> <!-- Continued explanation of goals -->
+      <hr> <!-- Horizontal rule for visual separation -->
+    </section> <!-- End of about section -->
 
-    <section id="courses">
-      <h2>Cursos destacados de la comunidad:</h2>
+    <!-- Featured courses section displaying available course cards -->
+    <section id="courses"> <!-- Courses section with ID for anchor linking -->
+      <h2>Featured community courses:</h2> <!-- Section heading -->
 
-      <article class="card">
-        <img src="images/calculo1.png" alt="Cálculo1">
-        <h3>Introducción al Cálculo (Precálculo)</h3>
-        <p>Adopta los conceptos del álgebra con los del cálculo.</p>
-        <p><a href="#">Ir al curso</a></p>
-      </article>
+      <div class="card-list"> <!-- Container div for course cards grid/flex layout -->
 
-      <article class="card">
-        <img src="images/calculo2.png" alt="Cálculo2">
-        <h3>Cálculo Diferencial e Integral</h3>
-        <p>Ejerce tus conocimientos algebráicos y domina el Cálculo.</p>
-        <p><a href="#">Ir al curso</a></p>
-      </article>
+        <!-- Course card: Pre-Calculus -->
+        <article class="card"> <!-- Article element representing individual course card -->
+          <img src="images/calculo1.png" alt="Calculus1"> <!-- Course thumbnail image -->
+          <h3>Introduction to Calculus (Pre-Calculus)</h3> <!-- Course title -->
+          <p>Bridge algebra concepts with calculus fundamentals.</p> <!-- Course description -->
+          <p><a href="#">Go to course</a></p> <!-- Link to course page (placeholder href) -->
+        </article> <!-- End of Pre-Calculus card -->
 
-      <article class="card">
-        <img src="images/progra.png" alt="Programación">
-        <h3>Introducción a la Programación</h3>
-        <p>Herramientas básicas para desarrollo web y conseguir trabajo rápido.</p>
-        <p><a href="#">Ir al curso</a></p>
-      </article>
+        <!-- Course card: Differential and Integral Calculus -->
+        <article class="card"> <!-- Article element for second course card -->
+          <img src="images/calculo2.png" alt="Calculus2"> <!-- Course thumbnail image -->
+          <h3>Differential and Integral Calculus</h3> <!-- Course title -->
+          <p>Exercise your algebraic knowledge and master Calculus.</p> <!-- Course description -->
+          <p><a href="#">Go to course</a></p> <!-- Link to course page (placeholder href) -->
+        </article> <!-- End of Calculus card -->
 
-      <article class="card">
-        <img src="images/ingles1.png" alt="Inglés1">
-        <h3>Inglés principiante (A1-A2)</h3>
-        <p>Gramática y vocabulario inicial para aprender inglés.</p>
-        <p><a href="#">Ir al curso</a></p>
-      </article>
+        <!-- Course card: Programming Introduction -->
+        <article class="card"> <!-- Article element for third course card -->
+          <img src="images/progra.png" alt="Programming"> <!-- Course thumbnail image -->
+          <h3>Introduction to Programming</h3> <!-- Course title -->
+          <p>Essential tools for web development and getting a job quickly.</p> <!-- Course description -->
+          <p><a href="#">Go to course</a></p> <!-- Link to course page (placeholder href) -->
+        </article> <!-- End of Programming card -->
 
-      <article class="card">
-        <img src="images/ingles2.png" alt="Inglés2">
-        <h3>Inglés intermedio (B1-B2)</h3>
-        <p>Gramática avanzada para entablar conversaciones duraderas.</p>
-        <p><a href="#">Ir al curso</a></p>
-      </article>
+        <!-- Course card: Beginner English -->
+        <article class="card"> <!-- Article element for fourth course card -->
+          <img src="images/ingles1.png" alt="English1"> <!-- Course thumbnail image -->
+          <h3>Beginner English (A1-A2)</h3> <!-- Course title with proficiency level -->
+          <p>Initial grammar and vocabulary for learning English.</p> <!-- Course description -->
+          <p><a href="#">Go to course</a></p> <!-- Link to course page (placeholder href) -->
+        </article> <!-- End of Beginner English card -->
 
-      <article class="card">
-        <img src="images/ingles3.png" alt="Inglés">
-        <h3>Inglés profesional (C1-C2)</h3>
-        <p>Habla y exprésate como todo un nativo inglés.</p>
-        <p><a href="#">Ir al curso</a></p>
-      </article>
+        <!-- Course card: Intermediate English -->
+        <article class="card"> <!-- Article element for fifth course card -->
+          <img src="images/ingles2.png" alt="English2"> <!-- Course thumbnail image -->
+          <h3>Intermediate English (B1-B2)</h3> <!-- Course title with proficiency level -->
+          <p>Advanced grammar for engaging in lasting conversations.</p> <!-- Course description -->
+          <p><a href="#">Go to course</a></p> <!-- Link to course page (placeholder href) -->
+        </article> <!-- End of Intermediate English card -->
 
-      <div style="clear:both;"></div> 
-      <hr>
-    </section>
+        <!-- Course card: Professional English -->
+        <article class="card"> <!-- Article element for sixth course card -->
+          <img src="images/ingles3.png" alt="English"> <!-- Course thumbnail image -->
+          <h3>Professional English (C1-C2)</h3> <!-- Course title with proficiency level -->
+          <p>Speak and express yourself like a native English speaker.</p> <!-- Course description -->
+          <p><a href="#">Go to course</a></p> <!-- Link to course page (placeholder href) -->
+        </article> <!-- End of Professional English card -->
 
-    <section id="team">
-      <h2>Este proyecto y página web fue desarrollada por:</h2>
-      <ul>
-        <li>Santiago Aguilar Arana</li>
-        <li>Adrián Gallardo Medina</li>
-        <li>Leonardo Etien Vizcaíno González</li>
-      </ul>
+      </div> <!-- End of card-list container -->
+      <hr> <!-- Horizontal rule for visual separation -->
+    </section> <!-- End of courses section -->
 
-      <aside class="note">
-        <strong>Nota:</strong> El proyecto está pensado para ser escalable y multilingüe en el futuro.
-      </aside>
-      <hr>
-    </section>
+    <!-- Team section crediting the project developers -->
+    <section id="team"> <!-- Team section with ID for anchor linking -->
+      <h2>This project and website was developed by:</h2> <!-- Section heading -->
+      <ul> <!-- Unordered list of team members -->
+        <li>Santiago Aguilar Arana</li> <!-- First team member -->
+        <li>Adrián Gallardo Medina</li> <!-- Second team member -->
+        <li>Leonardo Etien Vizcaíno González</li> <!-- Third team member -->
+      </ul> <!-- End of team member list -->
 
-    <section id="contact">
-      <h2>Contacto</h2>
-      <form action="#" method="post">
-        <label for="name">Nombre</label><br>
-        <input type="text" id="name" name="name" placeholder="Escribe aquí tu nombre"><br>
+      <!-- Note about future scalability -->
+      <aside class="note"> <!-- Aside element for supplementary information -->
+        <strong>Note:</strong> The project is designed to be scalable and multilingual in the future. <!-- Note about future plans -->
+      </aside> <!-- End of note aside -->
+      <hr> <!-- Horizontal rule for visual separation -->
+    </section> <!-- End of team section -->
 
-        <label for="email">Correo</label><br>
-        <input type="email" id="email" name="email" placeholder="Escribe aquí tu correo para contactarnos."><br>
+    <!-- Contact form section for user feedback and inquiries -->
+    <section id="contact"> <!-- Contact section with ID for anchor linking -->
+      <h2>Contact</h2> <!-- Section heading -->
+      <form action="#" method="post"> <!-- Form element with placeholder action and POST method -->
+        <label for="name">Name</label><br> <!-- Label for name input field -->
+        <input type="text" id="name" name="name" placeholder="Enter your name here"><br> <!-- Text input for user's name -->
 
-        <label for="message">Mensaje</label><br>
-        <textarea id="message" name="message" rows="5" placeholder="Déjanos una reseña o comentario acerca de la página."></textarea><br>
+        <label for="email">Email</label><br> <!-- Label for email input field -->
+        <input type="email" id="email" name="email" placeholder="Enter your email to contact us."><br> <!-- Email input with validation -->
 
-        <input type="submit" value="Enviar">
-      </form>
-    </section>
-  </main>
+        <label for="message">Message</label><br> <!-- Label for message textarea -->
+        <textarea id="message" name="message" rows="5" placeholder="Leave us a review or comment about the page."></textarea><br> <!-- Textarea for user message with 5 rows -->
 
-  <footer>
-    <div class="container">
-      <p>© 2025 — Proyecto Academia del Amigo <br><br>------ Hecho por Leonardo Vizcaíno, Santiago Aguilar y Adrián Gallardo ------</p>
-      <p><a href="#top">Volver arriba</a></p>
-    </div>
-  </footer>
+        <input type="submit" value="Send"> <!-- Submit button for form submission -->
+      </form> <!-- End of contact form -->
+    </section> <!-- End of contact section -->
+  </main> <!-- End of main content area -->
 
-</body>
-</html>
+  <!-- Footer with copyright and back-to-top link -->
+  <footer> <!-- Footer element for site footer content -->
+    <div class="container"> <!-- Container div for footer content layout -->
+      <p>© 2025 — Amigo's Academy Project <br><br>------ Made by Leonardo Vizcaíno, Santiago Aguilar and Adrián Gallardo ------</p> <!-- Copyright notice and credits with line breaks -->
+      <!-- The "#" automatically redirects to the top of the page for accessibility -->
+      <p><a href="#">Back to the top</a></p> <!-- Back-to-top link using # anchor to return to page top -->
+    </div> <!-- End of container -->
+  </footer> <!-- End of footer -->
+
+</body> <!-- End of body -->
+</html> <!-- End of HTML document -->
