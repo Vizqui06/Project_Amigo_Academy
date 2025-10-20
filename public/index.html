@@ -41,62 +41,39 @@
     </section> <!-- End of about section -->
 
     <!-- Featured courses section displaying available course cards -->
-    <section id="courses"> <!-- Courses section with ID for anchor linking -->
-      <h2>Featured community courses:</h2> <!-- Section heading -->
+    <section id="courses">
+      <h2>Featured community courses:</h2>
+      <div class="card-list" id="courseContainer">
+        <!-- Cards will be generated dynamically -->
+      </div>
+      <hr>
+    </section>
 
-      <div class="card-list"> <!-- Container div for course cards grid/flex layout -->
+<script>
+  // Fetch courses from backend and display them
+  fetch('/api/courses')
+    .then(res => res.json())
+    .then(courses => {
+      const container = document.getElementById('courseContainer');
+      container.innerHTML = '';
 
-        <!-- Course card: Pre-Calculus -->
-        <article class="card"> <!-- Article element representing individual course card -->
-          <img src="images/calculo1.png" alt="Calculus1"> <!-- Course thumbnail image -->
-          <h3>Introduction to Calculus (Pre-Calculus)</h3> <!-- Course title -->
-          <p>Bridge algebra concepts with calculus fundamentals.</p> <!-- Course description -->
-          <p><a href="#">Go to course</a></p> <!-- Link to course page (placeholder href) -->
-        </article> <!-- End of Pre-Calculus card -->
+      courses.forEach(course => {
+        const card = document.createElement('article');
+        card.classList.add('card');
+        card.innerHTML = `
+          <img src="${course.image}" alt="${course.title}">
+          <h3>${course.title}</h3>
+          <p>${course.description}</p>
+          <p><a href="/course/${course.id}">Go to course</a></p>
+        `;
+        container.appendChild(card);
+      });
+    })
+    .catch(err => {
+      console.error('Error loading courses:', err);
+    });
+</script>
 
-        <!-- Course card: Differential and Integral Calculus -->
-        <article class="card"> <!-- Article element for second course card -->
-          <img src="images/calculo2.png" alt="Calculus2"> <!-- Course thumbnail image -->
-          <h3>Differential and Integral Calculus</h3> <!-- Course title -->
-          <p>Exercise your algebraic knowledge and master Calculus.</p> <!-- Course description -->
-          <p><a href="#">Go to course</a></p> <!-- Link to course page (placeholder href) -->
-        </article> <!-- End of Calculus card -->
-
-        <!-- Course card: Programming Introduction -->
-        <article class="card"> <!-- Article element for third course card -->
-          <img src="images/progra.png" alt="Programming"> <!-- Course thumbnail image -->
-          <h3>Introduction to Programming</h3> <!-- Course title -->
-          <p>Essential tools for web development and getting a job quickly.</p> <!-- Course description -->
-          <p><a href="#">Go to course</a></p> <!-- Link to course page (placeholder href) -->
-        </article> <!-- End of Programming card -->
-
-        <!-- Course card: Beginner English -->
-        <article class="card"> <!-- Article element for fourth course card -->
-          <img src="images/ingles1.png" alt="English1"> <!-- Course thumbnail image -->
-          <h3>Beginner English (A1-A2)</h3> <!-- Course title with proficiency level -->
-          <p>Initial grammar and vocabulary for learning English.</p> <!-- Course description -->
-          <p><a href="#">Go to course</a></p> <!-- Link to course page (placeholder href) -->
-        </article> <!-- End of Beginner English card -->
-
-        <!-- Course card: Intermediate English -->
-        <article class="card"> <!-- Article element for fifth course card -->
-          <img src="images/ingles2.png" alt="English2"> <!-- Course thumbnail image -->
-          <h3>Intermediate English (B1-B2)</h3> <!-- Course title with proficiency level -->
-          <p>Advanced grammar for engaging in lasting conversations.</p> <!-- Course description -->
-          <p><a href="#">Go to course</a></p> <!-- Link to course page (placeholder href) -->
-        </article> <!-- End of Intermediate English card -->
-
-        <!-- Course card: Professional English -->
-        <article class="card"> <!-- Article element for sixth course card -->
-          <img src="images/ingles3.png" alt="English"> <!-- Course thumbnail image -->
-          <h3>Professional English (C1-C2)</h3> <!-- Course title with proficiency level -->
-          <p>Speak and express yourself like a native English speaker.</p> <!-- Course description -->
-          <p><a href="#">Go to course</a></p> <!-- Link to course page (placeholder href) -->
-        </article> <!-- End of Professional English card -->
-
-      </div> <!-- End of card-list container -->
-      <hr> <!-- Horizontal rule for visual separation -->
-    </section> <!-- End of courses section -->
 
     <!-- Team section crediting the project developers -->
     <section id="team"> <!-- Team section with ID for anchor linking -->

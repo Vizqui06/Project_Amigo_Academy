@@ -1,7 +1,27 @@
 {
   "type": "module",
   "dependencies": {
+    "body-parser": "^2.2.0",
     "express": "^5.1.0",
     "node": "^25.0.0"
-  }
+  },
+  "name": "project_amigo_academy",
+  "version": "1.0.0",
+  "description": "Academia del Amigo - Web Project\r Description of the Project:",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vizqui06/Project_Amigo_Academy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vizqui06/Project_Amigo_Academy/issues"
+  },
+  "homepage": "https://github.com/Vizqui06/Project_Amigo_Academy#readme"
 }

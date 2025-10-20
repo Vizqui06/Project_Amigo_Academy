@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "Introduction to Calculus (Pre-Calculus)",
+    "description": "Bridge algebra concepts with calculus fundamentals.",
+    "image": "images/calculo1.png",
+    "category": "Math"
+  },
+  {
+    "id": 2,
+    "title": "Differential and Integral Calculus",
+    "description": "Exercise your algebraic knowledge and master Calculus.",
+    "image": "images/calculo2.png",
+    "category": "Math"
+  },
+  {
+    "id": 3,
+    "title": "Introduction to Programming",
+    "description": "Essential tools for web development and getting a job quickly.",
+    "image": "images/progra.png",
+    "category": "Programming"
+  },
+  {
+    "id": 4,
+    "title": "Beginner English (A1-A2)",
+    "description": "Initial grammar and vocabulary for learning English.",
+    "image": "images/ingles1.png",
+    "category": "Language"
+  },
+  {
+    "id": 5,
+    "title": "Intermediate English (B1-B2)",
+    "description": "Advanced grammar for engaging in lasting conversations.",
+    "image": "images/ingles2.png",
+    "category": "Language"
+  },
+  {
+    "id": 6,
+    "title": "Professional English (C1-C2)",
+    "description": "Speak and express yourself like a native English speaker.",
+    "image": "images/ingles3.png",
+    "category": "Language"
+  }
+]

@@ -11,33 +11,22 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = 3000;
 
-// Para archivos estáticos (HTML, CSS, imágenes)
+// Middlewares
 app.use(express.static(path.join(__dirname, "public")));
-
-// Para leer datos de formularios
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Ruta para procesar el formulario de contacto
-app.post("/contact", (req, res) => {
+// === CONTACT FORM ROUTE ===
+app.post("/contact", (req, res) => {  
   const { name, email, message } = req.body;
-
   if (!name || !email || !message) {
-    return res.status(400).json({ error: "Todos los campos son obligatorios." });
+    return res.status(400).json({ error: "All fields are required." });
   }
 
-  // Crear un objeto mensaje
-  const newMessage = {
-    name,
-    email,
-    message,
-    date: new Date().toISOString(),
-  };
-
-  // Guardamos en messages.json
+  const newMessage = { name, email, message, date: new Date().toISOString() };
   const filePath = path.join(__dirname, "messages.json");
-  let messages = [];
 
+  let messages = [];
   if (fs.existsSync(filePath)) {
     messages = JSON.parse(fs.readFileSync(filePath, "utf8"));
   }
@@ -45,11 +34,39 @@ app.post("/contact", (req, res) => {
   messages.push(newMessage);
   fs.writeFileSync(filePath, JSON.stringify(messages, null, 2));
 
-  console.log("Nuevo mensaje recibido:", newMessage);
-  res.json({ success: true, message: "Mensaje enviado correctamente." });
+  console.log("New message:", newMessage);
+  res.json({ success: true, message: "Message received successfully!" });
 });
 
-// Iniciar el servidor
+// === COURSES API ROUTES ===
+
+// Ruta para obtener todos los cursos
+app.get("/api/courses", (req, res) => {
+  const filePath = path.join(__dirname, "data", "courses.json");
+  if (!fs.existsSync(filePath)) {
+    return res.status(404).json({ error: "Courses file not found." });
+  }
+
+  const courses = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  res.json(courses);
+});
+
+// Ruta para obtener un curso específico por ID
+app.get("/api/courses/:id", (req, res) => {
+  const courseId = parseInt(req.params.id);
+  const filePath = path.join(__dirname, "data", "courses.json");
+
+  const courses = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  const course = courses.find((c) => c.id === courseId);
+
+  if (!course) {
+    return res.status(404).json({ error: "Course not found." });
+  }
+
+  res.json(course);
+});
+
+// Start server
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
