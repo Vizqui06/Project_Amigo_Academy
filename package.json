@@ -1,5 +1,7 @@
 {
+  "type": "module",
   "dependencies": {
+    "express": "^5.1.0",
     "node": "^25.0.0"
   }
 }
