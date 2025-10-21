@@ -44,3 +44,5 @@ Result:
 
 
 --------------------------------
+# Important
+- Late devs logs creation so if there are blank spaces is because the late inclution of it.
