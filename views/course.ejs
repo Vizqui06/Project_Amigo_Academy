@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= course.title %> | Amigo's Academy</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+  <header id="top">
+    <div class="container">
+      <div class="logo">Amigo's Academy</div>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/#courses">Courses</a>
+        <a href="/#team">Team</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1><%= course.title %></h1>
+      <p><%= course.subtitle || course.category %></p>
+    </div>
+  </section>
+
+  <main class="container">
+    <section id="overview">
+      <img src="/<%= course.image %>" alt="<%= course.title %>" style="max-width:400px; border-radius:10px;">
+      <p><strong>Level:</strong> <%= course.level %> | <strong>Duration:</strong> <%= course.duration %> | <strong>Language:</strong> <%= course.language %></p>
+      <p><%= course.subtitle %></p>
+      <hr>
+    </section>
+
+    <section id="objectives">
+      <h2>Learning Objectives</h2>
+      <ul>
+        <% course.objectives.forEach(obj => { %>
+          <li><%= obj %></li>
+        <% }) %>
+      </ul>
+      <hr>
+    </section>
+
+    <section id="content">
+      <h2>Course Content</h2>
+      <% course.content.forEach(mod => { %>
+        <div class="module">
+          <h3>Module <%= mod.module %>: <%= mod.title %></h3>
+          <ul>
+            <% mod.topics.forEach(t => { %>
+              <li><%= t %></li>
+            <% }) %>
+          </ul>
+        </div>
+      <% }) %>
+      <hr>
+    </section>
+
+    <section id="resources">
+      <h2>Resources</h2>
+      <ul>
+        <% course.resources.videoLectures.forEach(v => { %>
+          <li>🎥 <a href="<%= v %>" target="_blank">Video Lecture</a></li>
+        <% }) %>
+        <% course.resources.pdfNotes.forEach(p => { %>
+          <li>📘 <a href="<%= p %>" target="_blank">Download Notes</a></li>
+        <% }) %>
+        <% course.resources.externalLinks.forEach(link => { %>
+          <li>🌐 <a href="<%= link.url %>" target="_blank"><%= link.title %></a></li>
+        <% }) %>
+      </ul>
+      <hr>
+    </section>
+
+    <a href="/" class="cta">← Back to Courses</a>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 — Amigo's Academy Project <br><br>------ Made by Leonardo Vizcaíno, Santiago Aguilar and Adrián Gallardo ------</p>
+      <p><a href="#">Back to the top</a></p>
+    </div>
+  </footer>
+</body>
+</html>

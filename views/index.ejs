@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amigo's Academy - Project</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+  <header id="top">
+    <div class="container">
+      <div class="logo">Amigo's Academy</div>
+      <nav>
+        <a href="#about">Home</a>
+        <a href="#courses">Courses</a>
+        <a href="#team">Team</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Learn for free, at your own pace.</h1>
+      <p>100% free educational platform inspired by online educational models like Khan Academy and Udemy.</p>
+      <p><a class="cta" href="#courses">View courses</a></p>
+    </div>
+  </section>
+
+  <main class="container">
+    <section id="about">
+      <h2>What is this?</h2>
+      <p>A project to promote Sustainable Development Goal #4: Quality education for all.
+         Our goal is to create free courses, learning paths, and an extensive support community.</p>
+      <hr>
+    </section>
+
+    <section id="courses">
+      <h2>Featured community courses:</h2>
+      <div class="card-list">
+        <% courses.forEach(course => { %>
+          <article class="card">
+            <img src="/<%= course.image %>" alt="<%= course.title %>">
+            <h3><%= course.title %></h3>
+            <p><%= course.description %></p>
+            <p><a href="/course/<%= course.id %>">Go to course</a></p>
+          </article>
+        <% }) %>
+      </div>
+      <hr>
+    </section>
+
+    <section id="team">
+      <h2>This project and website was developed by:</h2>
+      <ul>
+        <li>Santiago Aguilar Arana</li>
+        <li>Adrian Gallardo Medina</li>
+        <li>Leonardo Etien Vizcaíno González</li>
+      </ul>
+      <aside class="note">
+        <strong>Note:</strong> The project is designed to be scalable and multilingual in the future.
+      </aside>
+      <hr>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <form action="/contact" method="post">
+        <label for="name">Name</label><br>
+        <input type="text" id="name" name="name" placeholder="Enter your name here"><br>
+
+        <label for="email">Email</label><br>
+        <input type="email" id="email" name="email" placeholder="Enter your email"><br>
+
+        <label for="message">Message</label><br>
+        <textarea id="message" name="message" rows="5" placeholder="Leave us a comment."></textarea><br>
+
+        <input type="submit" value="Send">
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 — Amigo's Academy Project <br><br>------ Made by Leonardo Vizcaíno, Santiago Aguilar and Adrián Gallardo ------</p>
+      <p><a href="#">Back to the top</a></p>
+    </div>
+  </footer>
+</body>
+</html>

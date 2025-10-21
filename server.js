@@ -14,6 +14,10 @@ const app = express();
 // Set the server to run on port 3000.
 const PORT = 3000;
 
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+
 // We have to do functions that run on every request.
 
 // This is a key piece. I'm telling Express to serve all static files
@@ -71,52 +75,44 @@ app.post("/contact", (req, res) => {
   res.json({ success: true, message: "Message received successfully!" });
 });
 
-// This is a simple API endpoint to get the list of all courses for the homepage.
-app.get("/api/courses", (req, res) => {
-  // We define the path to the JSON file that holds the main list of courses.
-  const filePath = path.join(__dirname, "data", "courses.json"); 
-  
-  // If can't find that file for some reason...
-  if (!fs.existsSync(filePath)) { 
-    // Sends a 404 error (Not found).
-    return res.status(404).json({ error: "Courses file not found." });
+// Home Page as ejs
+app.get("/", (req, res) => {
+  const filePath = path.join(__dirname, "data", "courses.json");
+  if (!fs.existsSync(filePath)) {
+    return res.status(404).send("Courses file not found.");
   }
 
-  // If the file exists, it read it, parse it...
   const courses = JSON.parse(fs.readFileSync(filePath, "utf8"));
-  // ...and send the full list of courses back to the browser as a JSON response.
-  res.json(courses);
+  res.render("index", { courses });
 });
 
-// This route gets a specific course. The :id is a URL parameter (it's a variable).
-app.get("/api/courses/:id", (req, res) => {
-  // So it grabs the id from the URL. (if the request is /api/courses/calculus-101, courseId will be calculo).
+// COURSE PAGE (course.ejs) 
+app.get("/course/:id", (req, res) => {
   const courseId = req.params.id;
-  
-  // For this project, weare storing each course as its own JSON file.
-  // So, build the file path based on the ID.
   const filePath = path.join(__dirname, "api", "courses", `${courseId}.json`);
 
-  // If a file for that ID doesn't exist...
   if (!fs.existsSync(filePath)) {
-    // Returns a 404 error.
+    return res.status(404).render("error", { message: "Course not found." });
+  }
+
+  const course = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  res.render("course", { course });
+});
+
+// API: GET SINGLE COURSE JSON 
+app.get("/api/courses/:id", (req, res) => {
+  const courseId = req.params.id;
+  const filePath = path.join(__dirname, "api", "courses", `${courseId}.json`);
+
+  if (!fs.existsSync(filePath)) {
     return res.status(404).json({ error: "Course not found." });
   }
 
-  // If it exists, It reads the specific course file...
   const course = JSON.parse(fs.readFileSync(filePath, "utf8"));
-  // ...and send it back as JSON.
   res.json(course);
 });
 
-// This route serves the page for a single course.
-app.get("/course/:id", (req, res) => {
-  // This route serves the same course.html file for any ID.
-  // This implies that the course.html file itself has client-side JavaScript.
-  // That script will look at the window's URL, grab the ID, and then make a 'fetch' call
-  // to our /api/courses/:id route (the one above) to get the data and fill the page.
-  res.sendFile(path.join(__dirname, "public", "course.html"));
-});
+
 
 // Starts the server.
 app.listen(PORT, () => {
