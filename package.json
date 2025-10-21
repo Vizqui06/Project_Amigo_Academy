@@ -3,7 +3,8 @@
   "dependencies": {
     "body-parser": "^2.2.0",
     "express": "^5.1.0",
-    "node": "^25.0.0"
+    "node": "^25.0.0",
+    "nodemon": "^3.1.0"
   },
   "name": "project_amigo_academy",
   "version": "1.0.0",
@@ -11,6 +12,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js",
     "start": "node server.js"
   },
   "repository": {
@@ -18,7 +20,11 @@
     "url": "git+https://github.com/Vizqui06/Project_Amigo_Academy.git"
   },
   "keywords": [],
-  "author": "",
+  "authors": [
+    "Santiago Aguilar Arana",
+    "Adrián Gallardo Medina",
+    "Leonardo Etien Vizcaíno González"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Vizqui06/Project_Amigo_Academy/issues"
