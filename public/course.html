@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cursiyo</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header class="container">
+    <a href="/">← Back to Home</a>
+  </header>
+
+  <main class="container" id="courseDetails">
+    <h1>Loading course...</h1>
+  </main>
+
+  <script>
+    const courseId = window.location.pathname.split("/").pop();
+
+    fetch(`/api/courses/${courseId}`)
+      .then(res => {
+        if (!res.ok) throw new Error('Course not found');
+        return res.json();
+      })
+      .then(course => {
+        const container = document.getElementById('courseDetails');
+        container.innerHTML = `
+          <article class="course-page">
+            <img src="/${course.image}" alt="${course.title}" style="max-width:400px;">
+            <h1>${course.title}</h1>
+            <p>${course.description}</p>
+            <p><strong>Category:</strong> ${course.category}</p>
+          </article>
+        `;
+      })
+      .catch(err => {
+        document.getElementById('courseDetails').innerHTML =
+          `<h2>Course not found</h2><p><a href="/">Return to homepage</a></p>`;
+        console.error(err);
+      });
+  </script>
+</body>
+</html>

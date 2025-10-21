@@ -53,17 +53,21 @@ app.get("/api/courses", (req, res) => {
 
 // Ruta para obtener un curso específico por ID
 app.get("/api/courses/:id", (req, res) => {
-  const courseId = parseInt(req.params.id);
-  const filePath = path.join(__dirname, "data", "courses.json");
+  const courseId = req.params.id;
+  const filePath = path.join(__dirname, "api", "courses", `${courseId}.json`);
 
-  const courses = JSON.parse(fs.readFileSync(filePath, "utf8"));
-  const course = courses.find((c) => c.id === courseId);
-
-  if (!course) {
+  if (!fs.existsSync(filePath)) {
     return res.status(404).json({ error: "Course not found." });
   }
 
+  const course = JSON.parse(fs.readFileSync(filePath, "utf8"));
   res.json(course);
+});
+
+
+// Ruta para mostrar la página de un curso específico
+app.get("/course/:id", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "course.html"));
 });
 
 // Start server
