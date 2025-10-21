@@ -15,7 +15,7 @@ Some AI Prompt Examples are the following:
 
 1.- Error in the server.js file
 
-" I have an error trying to get the file(s) of this path 'api/courses/:id'. I believe this error is in the server.js file or the .ejs files. Could you help me find and if possible, correct this file? Take into account this is the project's current file and folder organization:
+" I have an error trying to get the file(s) of this path 'api/courses/:id'. I believe this error is in the server.js file. Could you help me find and if possible, correct this file? Take into account this is the project's current file and folder organization:
 
 (+) Folder
 (-) File
@@ -34,7 +34,7 @@ Some AI Prompt Examples are the following:
 	- package-lock.json
 
 I skipped some "node_modules" or "documentation" files and folders as I believe they are irrelevant to this mistake"
-Then attached the "server.js" and specific ".ejs" files or directly pasted the code or sections of the code.
+Then attached the "server.js" file or directly pasted the code or sections of the code.
 
 
 2.- Optimization in the index.html file
