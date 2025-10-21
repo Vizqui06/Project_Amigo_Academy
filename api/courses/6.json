@@ -1,0 +1,56 @@
+{
+  "id": 6,
+  "title": "Professional English (C1-C2)",
+  "subtitle": "Speak and express yourself like a native English speaker.",
+  "image": "images/ingles3.png",
+  "category": "Language",
+  "level": "Advanced",
+  "duration": "8 weeks",
+  "language": "English",
+  "author": "Leonardo Vizcaíno",
+  "lastUpdated": "2025-03-15",
+  "objectives": [
+    "Refine pronunciation and intonation for professional communication.",
+    "Use advanced grammar and vocabulary naturally.",
+    "Develop writing and presentation skills for business contexts."
+  ],
+  "content": [
+    {
+      "module": 1,
+      "title": "Advanced Grammar and Style",
+      "topics": [
+        "Subjunctive mood",
+        "Cleft sentences",
+        "Nominalization"
+      ]
+    },
+    {
+      "module": 2,
+      "title": "Professional Communication",
+      "topics": [
+        "Business meetings and emails",
+        "Public speaking techniques",
+        "Interview skills"
+      ]
+    },
+    {
+      "module": 3,
+      "title": "Academic and Technical Writing",
+      "topics": [
+        "Essay structure and coherence",
+        "Formal vocabulary",
+        "Summarizing and paraphrasing"
+      ]
+    }
+  ],
+  "resources": {
+    "videoLectures": [],
+    "pdfNotes": [],
+    "externalLinks": [
+      {
+        "title": "Cambridge English - C1 Advanced Exam",
+        "url": "https://www.cambridgeenglish.org/exams-and-tests/advanced/"
+      }
+    ]
+  }
+}

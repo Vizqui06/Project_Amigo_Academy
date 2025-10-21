@@ -1,0 +1,56 @@
+{
+  "id": 4,
+  "title": "Beginner English (A1-A2)",
+  "subtitle": "Initial grammar and vocabulary for learning English.",
+  "image": "images/ingles1.png",
+  "category": "Language",
+  "level": "Beginner",
+  "duration": "6 weeks",
+  "language": "English",
+  "author": "Santiago Aguilar",
+  "lastUpdated": "2025-02-20",
+  "objectives": [
+    "Learn basic English vocabulary and expressions.",
+    "Understand simple sentence structures.",
+    "Be able to introduce yourself and ask basic questions."
+  ],
+  "content": [
+    {
+      "module": 1,
+      "title": "Greetings and Introductions",
+      "topics": [
+        "Introducing yourself",
+        "Common greetings",
+        "Personal information"
+      ]
+    },
+    {
+      "module": 2,
+      "title": "Everyday Vocabulary",
+      "topics": [
+        "Numbers and colors",
+        "Days and months",
+        "Common objects"
+      ]
+    },
+    {
+      "module": 3,
+      "title": "Basic Grammar",
+      "topics": [
+        "Present simple tense",
+        "Articles and adjectives",
+        "Prepositions of place"
+      ]
+    }
+  ],
+  "resources": {
+    "videoLectures": [],
+    "pdfNotes": [],
+    "externalLinks": [
+      {
+        "title": "English Common Verbs List - Instituto San Andrés",
+        "url": "https://www.colegiosanandresdecolina.cl/wp-content/uploads/2020/03/1ER-CICLO-INGL%C3%88S-VERB-LIST.pdf"
+      }
+    ]
+  }
+}

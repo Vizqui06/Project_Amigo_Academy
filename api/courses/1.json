@@ -1,8 +1,63 @@
-  {
-    "id": 1,
-    "title": "Introduction to Calculus (Pre-Calculus)",
-    "description": "Bridge algebra concepts with calculus fundamentals.",
-    "image": "images/calculo1.png",
-    "category": "Math"
-  }
+{
+  "id": 1,
+  "title": "Introduction to Calculus (Pre-Calculus)",
+  "subtitle": "Bridge algebra concepts with calculus fundamentals.",
+  "image": "images/calculo1.png",
+  "category": "Math",
+  "level": "Beginner",
+  "duration": "4 weeks",
+  "language": "English",
+  "author": "Amigo's Academy Team",
+  "lastUpdated": "2025-02-15",
 
+  "objectives": [
+    "Understand algebraic principles required for calculus.",
+    "Learn to interpret and visualize functions graphically.",
+    "Build the foundation for limits, derivatives, and integrals."
+  ],
+
+  "content": [
+    {
+      "module": 1,
+      "title": "Review of Algebra and Functions",
+      "topics": [
+        "Functions and relations",
+        "Polynomial and rational expressions",
+        "Graph transformations"
+      ]
+    },
+    {
+      "module": 2,
+      "title": "Limits and Continuity",
+      "topics": [
+        "Concept of limits",
+        "Left and right-hand limits",
+        "Continuous and discontinuous functions"
+      ]
+    },
+    {
+      "module": 3,
+      "title": "Introduction to Derivatives",
+      "topics": [
+        "Slope and rate of change",
+        "Basic differentiation rules",
+        "Applications of derivatives in motion"
+      ]
+    }
+  ],
+
+  "resources": {
+    "videoLectures": [],
+    "pdfNotes": [],
+    "externalLinks": [
+      {
+        "title": "Khan Academy – Precalculus",
+        "url": "https://www.khanacademy.org/math/precalculus"
+      },
+      {
+        "title": "Paul’s Online Math Notes",
+        "url": "https://tutorial.math.lamar.edu/"
+      }
+    ]
+  }
+}

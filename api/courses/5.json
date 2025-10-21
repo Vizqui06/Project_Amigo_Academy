@@ -1,0 +1,56 @@
+{
+  "id": 5,
+  "title": "Intermediate English (B1-B2)",
+  "subtitle": "Advanced grammar for engaging in lasting conversations.",
+  "image": "images/ingles2.png",
+  "category": "Language",
+  "level": "Intermediate",
+  "duration": "7 weeks",
+  "language": "English",
+  "author": "Adrián Gallardo",
+  "lastUpdated": "2025-03-10",
+  "objectives": [
+    "Improve reading comprehension and listening skills.",
+    "Use more complex grammatical structures.",
+    "Engage in longer and spontaneous conversations."
+  ],
+  "content": [
+    {
+      "module": 1,
+      "title": "Complex Sentences",
+      "topics": [
+        "Relative clauses",
+        "Conditionals",
+        "Passive voice"
+      ]
+    },
+    {
+      "module": 2,
+      "title": "Conversational English",
+      "topics": [
+        "Idioms and phrasal verbs",
+        "Debate and argumentation",
+        "Polite expressions"
+      ]
+    },
+    {
+      "module": 3,
+      "title": "Reading and Listening Practice",
+      "topics": [
+        "News articles",
+        "Podcasts and interviews",
+        "Summarizing main ideas"
+      ]
+    }
+  ],
+  "resources": {
+    "videoLectures": [],
+    "pdfNotes": [],
+    "externalLinks": [
+      {
+        "title": "British Council",
+        "url": "https://learnenglish.britishcouncil.org/"
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": 3,
+  "title": "Introduction to Programming",
+  "subtitle": "Essential tools for web development and getting a job quickly.",
+  "image": "images/progra.png",
+  "category": "Programming",
+  "level": "Beginner",
+  "duration": "5 weeks",
+  "language": "English",
+  "author": "Leonardo Vizcaíno",
+  "lastUpdated": "2025-03-01",
+  "objectives": [
+    "Understand the fundamentals of programming logic.",
+    "Learn about variables, conditionals, and loops.",
+    "Write your first programs using JavaScript."
+  ],
+  "content": [
+    {
+      "module": 1,
+      "title": "Introduction to Logic and Flowcharts",
+      "topics": [
+        "What is programming?",
+        "Flowcharts and pseudocode",
+        "Basic problem-solving patterns"
+      ]
+    },
+    {
+      "module": 2,
+      "title": "JavaScript Basics",
+      "topics": [
+        "Variables and data types",
+        "Conditional statements",
+        "Loops and iterations"
+      ]
+    },
+    {
+      "module": 3,
+      "title": "Functions and Events",
+      "topics": [
+        "Creating and calling functions",
+        "Handling browser events",
+        "Building your first interactive page"
+      ]
+    }
+  ],
+  "resources": {
+    "videoLectures": [],
+    "pdfNotes": [],
+    "externalLinks": [
+      {
+        "title": "Mozilla Developer Network (MDN)",
+        "url": "https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web"
+      }
+    ]
+  }
+}

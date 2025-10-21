@@ -1,8 +1,56 @@
-  {
-    "id": 1,
-    "title": "Jamon",
-    "description": "Bridge algebra concepts with calculus fundamentals.",
-    "image": "images/calculo1.png",
-    "category": "Math"
+{
+  "id": 2,
+  "title": "Differential and Integral Calculus",
+  "subtitle": "Exercise your algebraic knowledge and master calculus fundamentals.",
+  "image": "images/calculo2.png",
+  "category": "Math",
+  "level": "Intermediate",
+  "duration": "6 weeks",
+  "language": "English",
+  "author": "Amigo's Academy Team",
+  "lastUpdated": "2025-03-05",
+  "objectives": [
+    "Understand the concept of derivatives and integrals.",
+    "Apply differentiation and integration to solve real-world problems.",
+    "Develop problem-solving skills through applied mathematics."
+  ],
+  "content": [
+    {
+      "module": 1,
+      "title": "Differentiation Techniques",
+      "topics": [
+        "Product and quotient rule",
+        "Chain rule",
+        "Implicit differentiation"
+      ]
+    },
+    {
+      "module": 2,
+      "title": "Applications of Derivatives",
+      "topics": [
+        "Optimization problems",
+        "Related rates",
+        "Graph sketching with first and second derivatives"
+      ]
+    },
+    {
+      "module": 3,
+      "title": "Introduction to Integration",
+      "topics": [
+        "Antiderivatives",
+        "Definite and indefinite integrals",
+        "The Fundamental Theorem of Calculus"
+      ]
+    }
+  ],
+  "resources": {
+    "videoLectures": [],
+    "pdfNotes": [],
+    "externalLinks": [
+      {
+        "title": "Paul’s Online Math Notes – Calculus I",
+        "url": "https://tutorial.math.lamar.edu/"
+      }
+    ]
   }
-
+}
