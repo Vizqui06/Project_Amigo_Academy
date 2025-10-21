@@ -14,7 +14,10 @@ const app = express();
 // Set the server to run on port 3000.
 const PORT = 3000;
 
+
+// Set the EJS as a templating engine to use
 app.set("view engine", "ejs");
+// Get where do we are gona get the templates
 app.set("views", path.join(__dirname, "views"));
 
 
@@ -75,32 +78,41 @@ app.post("/contact", (req, res) => {
   res.json({ success: true, message: "Message received successfully!" });
 });
 
-// Home Page as ejs
+// Endpoint that render the index (home page) as ejs
 app.get("/", (req, res) => {
+  // This is the path of the JSON file that contains the courses list
   const filePath = path.join(__dirname, "data", "courses.json");
+
+  // Error handling if the JSON file doesnt exist
   if (!fs.existsSync(filePath)) {
     return res.status(404).send("Courses file not found.");
   }
 
+  // Read the file as an array
   const courses = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  // Render the  index.ejs template while passing the courses array 
   res.render("index", { courses });
 });
 
-// COURSE PAGE (course.ejs) 
+// Endpoint that handles the single course page (course.ejs) 
 app.get("/course/:id", (req, res) => {
+  // Get the course id from the url params
   const courseId = req.params.id;
+  // Get the path of the specific JSON file of the course
   const filePath = path.join(__dirname, "api", "courses", `${courseId}.json`);
-
+  // Same error handling if the path doesnt exist.
   if (!fs.existsSync(filePath)) {
     return res.status(404).render("error", { message: "Course not found." });
   }
-
+  //Read the file and make it into an array or an object 
   const course = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  //Render course.ejs while passing the course array data into the template
   res.render("course", { course });
 });
 
-// API: GET SINGLE COURSE JSON 
+// Endpoint for getting the raw JSON data from a specifi course
 app.get("/api/courses/:id", (req, res) => {
+  // From this
   const courseId = req.params.id;
   const filePath = path.join(__dirname, "api", "courses", `${courseId}.json`);
 
@@ -108,7 +120,9 @@ app.get("/api/courses/:id", (req, res) => {
     return res.status(404).json({ error: "Course not found." });
   }
 
+  // To this is the same as the previous endpoint
   const course = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  // Just in this part, instead of rendering some template it just send the json as a response
   res.json(course);
 });
 
