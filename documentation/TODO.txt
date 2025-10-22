@@ -1,0 +1,19 @@
+Adrián, Amigo, aquí les va lo que tenemos que hacer para el final y que la fokin app esté completa:
+
+You are still not using any data persistance or data access from an external source (API or DB). /// Hay que anclarlo a una base de datos
+this was the time you should have been looking for a source on that regards. /// Que no hicimos la chamba al 100
+If you are going to be maintaining your DB for content, what you have is a good demo, but think about that in the future! /// Hay que hacerlo para el final.
+
+
+I suggest you look for external sources, or at least source them from a DB and maybe create an interface to edit them in your app as an admin task.
+/// Tremendo desmauser va a ser implementar esto, pero bueno.
+
+
+I would also suggest that you implement a user login to at least keep track of some information for every user, /// En Whats les pasé un video de esto
+that is something that would be expected for the final delivery. /// Que quede pal final
+
+Also, you uploaded node_modules! that is a big NO, so you also lost points because of that. /// Nos faltó el git ignore xd. Ya lo agregué
+
+
+Finally, your documentation is lacking content; please improve that moving forward. /// Hay que comentar en "jsdoc notation" para cada archivo de js
+/// El HTML semantic es preferible para REACT para el desmouser que se va a venir. 
