@@ -38,6 +38,15 @@ En esa vista, poder crear, eliminar y modificar cursos (hay que hacer el formato
 * Podemos hacer un JSON que, cuando se marque la casilla, el curso se ponga "TRUE" o "completed" o algo así y vincular ese JSON 
  con el correo del usuario de la base de datos (el correo lo podemos conseguir cuando se autentifique en la página con Google OAuth 2.0).
 
+* Preparar el endpoint para redireccionar cuando se valide el usuario con Google. La validación nos va a regresar una llave "key" si fue exitosa, 
+ si no, nos regresa un error, pero como passport se encarga de esa lógica, usar failure redirect, usar eso para decidir a dónde se va a dirigir.
+ Esta implementación puede ponerse donde sea mientras la app escuche en ese puerto.
+
+* Hacer que messages.json sirva para algo (no está anclado a nada y está cagado que esté en la rama principal acumulando polvo xd)
+
+* Adivinar qué hace prev-server y los prev-index
+
+* Otras cosas que descubriremos que no funcionan en un futuro por What's
 
 
 Terminados:
