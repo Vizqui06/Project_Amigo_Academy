@@ -1,7 +1,12 @@
 Adrián, Amigo, aquí les va lo que tenemos que hacer para el final y que la fokin app esté completa:
 
+
+**Críticas de Castillo**:
+
 You are still not using any data persistance or data access from an external source (API or DB). /// Hay que anclarlo a una base de datos
 this was the time you should have been looking for a source on that regards. /// Que no hicimos la chamba al 100
+
+
 If you are going to be maintaining your DB for content, what you have is a good demo, but think about that in the future! /// Hay que hacerlo para el final.
 
 
@@ -12,8 +17,32 @@ I suggest you look for external sources, or at least source them from a DB and m
 I would also suggest that you implement a user login to at least keep track of some information for every user, /// En Whats les pasé un video de esto
 that is something that would be expected for the final delivery. /// Que quede pal final
 
-Also, you uploaded node_modules! that is a big NO, so you also lost points because of that. /// Nos faltó el git ignore xd. Ya lo agregué
 
+
+**Mejoras solicitadas por el equipo:**
+
+---*Adrián: 
+Crear una vista de administrador que se active cuando cualquiera de nuestras cuentas se autentique con la DB de Mongo Atlas.
+En esa vista, poder crear, eliminar y modificar cursos (hay que hacer el formato para poder crearlas sin tener que ir al repo a hacerlo manual).
+
+
+--*Vizca:
+* Cuando alguien entre a la página, en la esquina superior derecha salga una ventanita para registrarse con Google (usando OAuth 2.0), luego ese 
+ correo se va a comparar con la DB de Mongo Atlas, con la idea de Adrián, identificar si el usuario es Admin o no (si se puede, cambiar a vista usuario)
+
+* Para marcar el progreso, parte de la crítica de Castillo; cuando un usuario le de click al enlace de algún curso, que el estatus del curso 
+ cambie de "not started" a "in progress" cuando el usuario le dé clic al enlace. Y a la derecha de la pantalla unas cajas tipo checklist que marque 
+ (manualmente por el mismo usuario) si ha terminado el curso del link o no; podemos hacer una tabla y 
+ separamos los enlaces de las cajas con padding en el CSS.
+
+* Podemos hacer un JSON que, cuando se marque la casilla, el curso se ponga "TRUE" o "completed" o algo así y vincular ese JSON 
+ con el correo del usuario de la base de datos (el correo lo podemos conseguir cuando se autentifique en la página con Google OAuth 2.0).
+
+
+
+Terminados:
+
+Also, you uploaded node_modules! that is a big NO, so you also lost points because of that. /// Nos faltó el git ignore xd. Ya lo agregué.
 
 Finally, your documentation is lacking content; please improve that moving forward. /// Hay que comentar en "jsdoc notation" para cada archivo de js
 /// El HTML semantic es preferible para REACT para el desmouser que se va a venir. 

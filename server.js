@@ -35,7 +35,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // which we'll use for our API routes.
 app.use(bodyParser.json());
 
-// Set up the POST route for our contact form. It "listens" for requests at /contact.
+/**
+ * POST endpoint to handle contact form submissions.
+ * Validates the form data, saves it to messages.json, and returns a success response.
+ * 
+ * @route POST /contact
+ * @param {express.Request} req - Express request object containing form data in req.body
+ * @param {Object} req.body - The request body
+ * @param {string} req.body.name - The sender's name
+ * @param {string} req.body.email - The sender's email address
+ * @param {string} req.body.message - The message content
+ * @param {express.Response} res - Express response object
+ * @returns {Object} JSON response with success status or error message
+ */
 app.post("/contact", (req, res) => { 
   
   // Pulls the name, email, and message fields out of the form data (which lives in req.body).
@@ -78,7 +90,15 @@ app.post("/contact", (req, res) => {
   res.json({ success: true, message: "Message received successfully!" });
 });
 
-// Endpoint that render the index (home page) as ejs
+/**
+ * GET endpoint that renders the home page with a list of courses.
+ * Reads course data from courses.json and passes it to the index.ejs template.
+ * 
+ * @route GET /
+ * @param {express.Request} req - Express request object
+ * @param {express.Response} res - Express response object
+ * @returns {void} Renders the index.ejs template with courses data
+ */
 app.get("/", (req, res) => {
   // This is the path of the JSON file that contains the courses list
   const filePath = path.join(__dirname, "data", "courses.json");
@@ -94,7 +114,16 @@ app.get("/", (req, res) => {
   res.render("index", { courses });
 });
 
-// Endpoint that handles the single course page (course.ejs) 
+/**
+ * GET endpoint that renders a single course detail page.
+ * Reads specific course data from individual JSON files and passes it to course.ejs.
+ * 
+ * @route GET /course/:id
+ * @param {express.Request} req - Express request object
+ * @param {string} req.params.id - The course ID from the URL parameter
+ * @param {express.Response} res - Express response object
+ * @returns {void} Renders the course.ejs template with course data or error page if not found
+ */
 app.get("/course/:id", (req, res) => {
   // Get the course id from the url params
   const courseId = req.params.id;
@@ -110,7 +139,16 @@ app.get("/course/:id", (req, res) => {
   res.render("course", { course });
 });
 
-// Endpoint for getting the raw JSON data from a specifi course
+/**
+ * API endpoint that returns raw JSON data for a specific course.
+ * Used for programmatic access to course information.
+ * 
+ * @route GET /api/courses/:id
+ * @param {express.Request} req - Express request object
+ * @param {string} req.params.id - The course ID from the URL parameter
+ * @param {express.Response} res - Express response object
+ * @returns {Object} JSON object containing course data or error message
+ */
 app.get("/api/courses/:id", (req, res) => {
   // From this
   const courseId = req.params.id;
@@ -120,15 +158,19 @@ app.get("/api/courses/:id", (req, res) => {
     return res.status(404).json({ error: "Course not found." });
   }
 
-  // To this is the same as the previous endpoint
   const course = JSON.parse(fs.readFileSync(filePath, "utf8"));
-  // Just in this part, instead of rendering some template it just send the json as a response
+  // Instead of rendering some template it just send the json as a response
   res.json(course);
 });
 
 
 
-// Starts the server.
+/**
+ * Starts the Express server and listens for incoming requests.
+ * 
+ * @param {number} PORT - The port number to listen on (3000)
+ * @param {Function} callback - Callback function executed when server starts successfully
+ */
 app.listen(PORT, () => {
   // Show the message in the terminal so I know the server is up and running.
   console.log(`Server running on http://localhost:${PORT}`);
