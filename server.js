@@ -17,7 +17,14 @@ import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 // Import dotenv - Loads environment variables from .env file, used to get SECRET keys and Google credentials
 import dotenv from 'dotenv';
 
+const id = process.env.GOOGLE_CLIENT_ID;
+const secret = process.env.GOOGLE_CLIENT_SECRET;
+console.log('GOOGLE_CLIENT_ID cargado?', !!id);
+console.log('GOOGLE_CLIENT_ID (preview):', id ? id.slice(0, 10) + '...' : 'MISSING');
+console.log('GOOGLE_CLIENT_SECRET cargado?', !!secret);
 
+// Load environment variables from credentials.env file - Makes process.env.SESSION_SECRET, GOOGLE_CLIENT_ID, etc. available
+dotenv.config({ path: './credentials.env'});
 // Convert the current module's URL to a file path - Needed because ES modules don't have __dirname by default
 const __filename = fileURLToPath(import.meta.url);
 // Extract the directory path from the filename - Used throughout the code to build paths to files (views, public, data folders)
@@ -45,9 +52,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Parse JSON data from request body - Allows the /contact and API endpoints to receive JSON data
 app.use(bodyParser.json());
-
-// Load environment variables from .env file - Makes process.env.SESSION_SECRET, GOOGLE_CLIENT_ID, etc. available
-dotenv.config();
 
 // Configure session middleware - Creates encrypted cookies to track user login state across requests
 // The secret is used to sign the session ID cookie, preventing tampering
