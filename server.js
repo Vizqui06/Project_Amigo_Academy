@@ -17,23 +17,41 @@ import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 // Import dotenv - Loads environment variables from .env file, used to get SECRET keys and Google credentials
 import dotenv from 'dotenv';
 
-const id = process.env.GOOGLE_CLIENT_ID;
-const secret = process.env.GOOGLE_CLIENT_SECRET;
-console.log('GOOGLE_CLIENT_ID cargado?', !!id);
-console.log('GOOGLE_CLIENT_ID (preview):', id ? id.slice(0, 10) + '...' : 'MISSING');
-console.log('GOOGLE_CLIENT_SECRET cargado?', !!secret);
-
-// Load environment variables from credentials.env file - Makes process.env.SESSION_SECRET, GOOGLE_CLIENT_ID, etc. available
-dotenv.config({ path: './credentials.env'});
+// Setup __dirname for ES modules - This block creates __dirname similar to CommonJS
 // Convert the current module's URL to a file path - Needed because ES modules don't have __dirname by default
 const __filename = fileURLToPath(import.meta.url);
 // Extract the directory path from the filename - Used throughout the code to build paths to files (views, public, data folders)
 const __dirname = path.dirname(__filename);
+// Path to the credentials.env file - Used by dotenv to load environment variables
+const envPath = path.join(__dirname, 'credentials.env');
+
+// Check if credentials.env file exists and remove BOM if present - Prevents issues with dotenv parsing
+if (fs.existsSync(envPath)) {
+  // Read the raw contents of the credentials.env file
+  let raw = fs.readFileSync(envPath, 'utf8');
+  // Check if the first character is a BOM (Byte Order Mark)
+  if (raw.charCodeAt(0) === 0xFEFF) {
+    // Remove the BOM by slicing it off
+    raw = raw.slice(1);
+    // Write the cleaned content back to the credentials.env file
+    fs.writeFileSync(envPath, raw, 'utf8');
+    // Log to console that BOM was removed
+    console.log('credentials.env --> BOM removido automáticamente');
+  }
+}
+
+// Load environment variables from credentials.env file - Makes process.env.SESSION_SECRET, GOOGLE_CLIENT_ID, etc. available
+dotenv.config({ path: './credentials.env'});
+
+// Verify that essential environment variables are loaded - Logs to console for debugging
+
+console.log('GOOGLE_CLIENT_ID cargado?', !!process.env.GOOGLE_CLIENT_ID);
+console.log('GOOGLE_CLIENT_SECRET cargado?', !!process.env.GOOGLE_CLIENT_SECRET);
 
 // Create the Express application instance - This is the main server object that all routes and middleware attach to
 const app = express();
 // Define the port number - The server will listen on this port, used in app.listen() at the bottom
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 
 // Configure EJS as the templating engine - This tells Express to process .ejs files, used in res.render() calls
@@ -68,6 +86,11 @@ app.use(passport.initialize());
 // Enable persistent login sessions - Allows passport to use the session middleware configured above
 app.use(passport.session());
 
+// Define the Google OAuth callback URL - This must match the URL set in Google Cloud Console
+const CALLBACK_URL = process.env.GOOGLE_CALLBACK_URL || 'http://localhost:3000/auth/google/callback';
+// Log the callback URL for debugging purposes
+console.log('Usando GOOGLE_CALLBACK_URL =', CALLBACK_URL);
+
 /**
  * Configure Passport to use Google OAuth 2.0 strategy for authentication.
  * This handles the OAuth flow with Google and processes user profile data.
@@ -90,7 +113,7 @@ passport.use(new GoogleStrategy({
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     // Callback URL registered in Google Cloud Console - Where Google sends users after they authorize
     // This URL must match exactly what's configured in Google Cloud Console
-    callbackURL: "https://amigo-academy.onrender.com/auth/google/callback",
+    callbackURL: CALLBACK_URL,
   },
   // Verify callback function - Runs after Google authenticates the user
   // This is where we would typically save the user to a database
@@ -371,6 +394,6 @@ app.get("/api/courses/:id", (req, res) => {
 // Start the server - Makes all the routes above accessible via HTTP
 // This must be the last thing in the file after all routes are defined
 app.listen(PORT, () => {
-  // Log success message - Confirms server is running and shows the URL to access it
-  console.log(`Server running on http://localhost:${PORT}`);
+  // Log to console that server is running on specified port
+  console.log(`Server running on port ${PORT}`);
 });
