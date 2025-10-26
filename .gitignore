@@ -1,5 +1,7 @@
-credentials.env
-credentials.json
 node_modules/
 messages.json
+credentials.json
 .env
+credentials.env
+
+

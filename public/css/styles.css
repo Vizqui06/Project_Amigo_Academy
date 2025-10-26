@@ -1,375 +1,55 @@
-/*
-  ==========================================
-  1. IMPORTS & GLOBAL STYLES
-  First thing's first, let's pull in the fonts we want from Google.
-  We're grabbing 'Lato' for body text and 'Merriweather' for headlines.
-  ==========================================
-*/
+/* ========================================
+   FONTS & GLOBAL STYLES
+   ======================================== */
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@700&display=swap');
 
-/* Global Box Model Reset
-  This little '*' selector targets EVERYTHING. We're telling the browser
-  to use 'border-box', which is a life-saver. It means when you say
-  'width: 100px', the padding and border are *included* in that 100px.
-  No more weird layout math. It just makes things work.
-*/
+/* Border-box model for all elements - includes padding/border in width calculations */
 * {
   box-sizing: border-box;
 }
 
-/* Element Selector
-  This 'body' part styles the whole page. It's the default for everything.
-  'font-family' sets our main text font to 'Lato'. 'sans-serif' is just a backup
-  in case 'Lato' doesn't load for some reason.
-  'background' is that super light gray, almost white.
-  'color' is our main text color, a dark gray (not pure black, which is harsh).
-  'margin: 0' is a reset. Browsers add their own space, and we hate that, so we remove it.
-  'line-height' adds a bit more space between lines of text. Makes it easier to read.
-*/
 body {
   font-family: 'Lato', sans-serif;
-  background: #f8f9fa; 
-  color: #212529; 
+  background: #f8f9fa;
+  color: #212529;
   margin: 0;
   line-height: 1.6;
 }
 
-/* Applying our "authoritative" serif font to all headings
-  Here we're grabbing all the headings (h1, h2, etc.) and the logo.
-  We're giving them the 'Merriweather' font. This is that 'serif' font
-  (the one with the little feet) to make it look classic and professional.
-  It contrasts nicely with the simple 'Lato' body text.
-*/
+/* Serif font for headings and logo for professional look */
 h1, h2, h3, h4, h5, .logo {
   font-family: 'Merriweather', serif;
   font-weight: 700;
 }
 
-/* This is the main container that centers our content.
-  '.container' is our main wrapper. We use this class all over the HTML.
-  'max-width' means it'll *never* get wider than 960px, even on a giant monitor.
-  'margin: 0 auto' is the magic trick to center it on the page. (0 top/bottom, auto left/right).
-  'padding' just gives it 16px of breathing room on the left/right,
-  so text doesn't slam against the edge of the screen on a phone.
-*/
+/* Main content wrapper - centers content and prevents it from getting too wide */
 .container {
   max-width: 960px;
   margin: 0 auto;
   padding: 0 16px;
 }
 
-/* Just styling the <hr> tag, the horizontal line.
-  We remove its default ugly 3D border and just make it a simple,
-  thin, light gray line. Much cleaner.
-*/
 hr {
   border: none;
-  border-top: 1px solid #dee2e6; 
+  border-top: 1px solid #dee2e6;
   margin: 2rem 0;
 }
 
-/*
-  ==========================================
-  2. HEADER (NAVBAR) STYLING
-  ==========================================
-*/
-/* Okay, the <header> tag, which is our top navbar.
-  'background' is that dark color.
-  'color' is white, for contrast.
-  'padding' gives it some vertical space.
-  'position: sticky' is the cool part. It makes the nav
-  scroll with the page until it hits the 'top: 0' of the window,
-  and then it just *sticks* there as you scroll down. Really good for UX.
-  'z-index' just makes sure it stays on top of other stuff.
-*/
+/* ========================================
+   HEADER (NAVBAR)
+   ======================================== */
+/* Sticky header - stays at top when scrolling */
 header {
-  background: #212529; 
+  background: #212529;
   color: #fff;
   padding: 1rem 0;
   position: sticky;
   top: 0;
   z-index: 1020;
-  box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075); /* A subtle shadow */
+  box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075);
 }
 
-/* This targets the .container *inside* the header.
-  We're using 'display: flex' (Flexbox!) to make its children
-  (the logo and the nav) sit in a nice row.
-  'justify-content' pushes them to opposite ends ('space-between').
-  'align-items' centers them vertically so they line up perfectly.
-*/
-header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-size: 1.5rem; /* 24px */
-  margin: 0;
-}
-
-/* Element Selector
-  Targeting the links <a> inside the <nav> element.
-  'color' is a slightly faded white, not a bright-in-your-face white.
-  'text-decoration: none' removes that default blue underline.
-*/
-nav a {
-  color: rgba(255, 255, 255, 0.75); 
-  text-decoration: none;
-  padding: 0.5rem 0.75rem;
-  font-size: 1rem;
-}
-
-/* Pseudo-class Selector
-  This is a 'pseudo-class'. When you hover the mouse over
-  the nav link, the color becomes pure white. Just a nice
-  little feedback effect for the user.
-*/
-nav a:hover {
-  color: #fff;
-}
-
-/*
-  ==========================================
-  3. HERO SECTION STYLING
-  ==========================================
-*/
-/* This is for that big "hero" section at the top.
-  'background' is light gray.
-  'color' is dark text.
-  'padding' gives it a *ton* of vertical space (4rem) to feel big and important.
-  'text-align' centers all the text inside it.
-*/
-.hero {
-  background: #f8f9fa; 
-  color: #212529; 
-  /* There's a lot of wasted space so it's time to make some changes in the padding: 
-    padding-top: 4rem (keeps the space above)
-    padding-right: 0
-    padding-bottom: 2rem (reduces the space below by half)
-    padding-left: 0
-  */
-  padding: 4rem 0 2rem; 
-  text-align: center;
-  /* And reduce the bottom margin too */
-  margin-bottom: 1rem; 
-}
-
-.hero h1 {
-  font-size: 3.5rem; /* Big text! */
-  margin: 0 0 0.5rem 0;
-}
-
-.hero p {
-  font-size: 1.25rem; /* A little bigger than normal text */
-  color: #6c757d; /* 'text-muted', a nice gray */
-  margin: 0 0 1.5rem 0;
-}
-
-/* This is our green 'Call to Action' button.
-  We're styling an <a> link to look like a big button.
-  'background' is our green accent color.
-  'padding' makes it big and chunky.
-  'border-radius' gives it those nice rounded corners.
-  'display: inline-block' is important, it lets us add padding
-  and makes it respect margins, which <a> tags don't normally do.
-*/
-.cta { 
-  background: #28a745;
-  color: #fff;
-  padding: 0.75rem 1.5rem; 
-  text-decoration: none;
-  border-radius: 0.375rem; 
-  font-weight: bold;
-  font-size: 1.25rem;
-  display: inline-block; 
-}
-
-.cta:hover {
-  background: #218838; /* A darker green for the hover state */
-}
-
-/*
-  ==========================================
-  4. CARD (COURSES) GRID STYLING
-  ==========================================
-*/
-
-/* *** THIS IS THE IMPORTANT ONE FOR YOUR GRID ***
-  This is the wrapper for all your cards. You *need*
-  to have <div class="card-list"> in your HTML for this to work.
-  'display: flex' is what turns on the grid! It tells all the
-  children (the '.card' elements) to line up in a row.
-  'flex-wrap: wrap' is also critical. It lets the cards "wrap"
-  to the next line when they run out of space.
-  'gap: 20px' is a modern way to add 20px of space between
-  all the cards, horizontally and vertically. No more margin hacks.
-*/
-.card-list {
-  display: flex; 
-  flex-wrap: wrap; 
-  gap: 20px; 
-}
-
-/* This styles each individual course card.
-  'background' is white, so it stands out from the gray page.
-  'border' and 'box-shadow' give it that "lifted off the page" feel.
-  'width: 100%' is for **Mobile First**. By default, we make
-  the card take up 100% of the width. This makes it stack
-  on phones. The media queries below will change this.
-*/
-.card {
-  background: #fff;
-  border: 1px solid #dee2e6; 
-  border-radius: 0.375rem;
-  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
-  width: 100%;
-}
-
-.card img {
-  width: 100%;
-  height: auto;
-  /* Make the top corners of the image match the card's rounded corners */
-  border-top-left-radius: 0.375rem;
-  border-top-right-radius: 0.375rem;
-}
-
-.card h3 {
-  font-size: 1.25rem;
-  margin: 1rem 1rem 0.5rem 1rem; /* Spacing inside the card */
-}
-
-.card p {
-  font-size: 1rem;
-  margin: 0 1rem 1rem 1rem;
-}
-
-/* Styling the "Ir al curso" link inside the card */
-.card p a {
-  background: #28a745;
-  color: #fff;
-  padding: 0.375rem 0.75rem;
-  text-decoration: none;
-  border-radius: 0.375rem;
-  font-weight: bold;
-  display: inline-block; 
-}
-
-.card p a:hover {
-  background: #218838;
-}
-
-/*
-  ==========================================
-  5. MEDIA QUERIES (Responsive Design)
-  This is where the magic happens. A 'Media Query'
-  applies styles *only* if a condition is met,
-  like the screen size.
-  ==========================================
-*/
-
-/* On screens 768px wide or LARGER (tablets)
-  This rule now applies. We tell the '.card' to be 'calc(50% - 10px)' wide.
-  This simple math (50% minus half the 'gap') creates a
-  perfect 2-column grid.
-*/
-@media (min-width: 768px) {
-  .card {
-    width: calc(50% - 10px);
-  }
-}
-
-/* On screens 992px wide or LARGER (desktops)
-  This is the *second* Media Query. This one fires
-  at 992px or MORE (like a desktop).
-  It overrides the tablet rule and sets the width to
-  'calc(33.333% - 13.33px)', which gives us our
-  3-COLUMN GRID. This is the code that fixes your layout.
-*/
-@media (min-width: 992px) {
-  .card {
-    width: calc(33.333% - 13.33px);
-  }
-}
-
-/*
-  ==========================================
-  6. ASIDE & FORM STYLING
-  ==========================================
-*/
-/* This is for the "Nota:" box in the Team section */
-.note {
-  background: #e2e3e5; 
-  border-left: 4px solid #084298; /* A nice blue accent border */
-  padding: 1rem;
-  margin: 1rem 0;
-  border-radius: 0.375rem;
-}
-
-/* Attribute Selectors
-  This styles all inputs that have 'type="text"', 'type="email"',
-  and the 'textarea' tag.
-  We make them 100% wide and add padding and borders to
-  make them look clean and modern, like Bootstrap's.
-*/
-form input[type="text"],
-form input[type="email"],
-form textarea {
-  width: 100%;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid #ced4da;
-  border-radius: 0.375rem;
-  margin-bottom: 1rem;
-  font-family: 'Lato', sans-serif; /* Make sure they use our body font */
-  font-size: 1rem;
-}
-
-/* Styling the submit button */
-form input[type="submit"] {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  background: #212529; /* Dark, matching the header/footer */
-  color: #fff;
-  cursor: pointer; /* Shows the 'hand' cursor on hover */
-  border-radius: 0.375rem;
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-
-form input[type="submit"]:hover {
-  background: #495057; /* A lighter dark color on hover */
-}
-
-/*
-  ==========================================
-  7. FOOTER STYLING
-  ==========================================
-*/
-/* And finally, the <footer> at the bottom of the page.
-  We match the 'background' to the header to create a
-  nice visual "sandwich" for the page content.
-  'padding' and 'margin-top' give it space.
-  'text-align' centers everything.
-*/
-footer {
-  background: #212529; 
-  color: #dee2e6; 
-  padding: 2.5rem 0;
-  margin-top: 3rem;
-  text-align: center;
-}
-
-footer a { 
-  color: #fff; 
-  text-decoration: underline; /* Underline links in the footer */
-}
-
-/*
-  ==========================================
-  8. AUTHENTICATION STYLING
-  ==========================================
-*/
+/* Flexbox layout: logo on left, nav in middle, auth on right */
 header .container {
   display: flex;
   justify-content: space-between;
@@ -378,14 +58,32 @@ header .container {
   gap: 20px;
 }
 
-/* Authentication section in header */
+.logo {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+nav a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+/* ========================================
+   AUTHENTICATION SECTION
+   ======================================== */
 .auth-section {
   display: flex;
   align-items: center;
   margin-left: auto;
 }
 
-/* Sign-in button styling */
+/* Google sign-in button */
 .signin-btn {
   display: inline-flex;
   align-items: center;
@@ -407,7 +105,7 @@ header .container {
   transform: translateY(-1px);
 }
 
-/* User info section when logged in */
+/* User info display when logged in */
 .user-info {
   display: flex;
   align-items: center;
@@ -418,7 +116,6 @@ header .container {
   backdrop-filter: blur(10px);
 }
 
-/* User avatar image */
 .user-avatar {
   width: 32px;
   height: 32px;
@@ -427,7 +124,6 @@ header .container {
   object-fit: cover;
 }
 
-/* User name text */
 .user-name {
   color: white;
   font-size: 14px;
@@ -435,7 +131,6 @@ header .container {
   white-space: nowrap;
 }
 
-/* Logout button */
 .logout-btn {
   padding: 6px 12px;
   background: rgba(255, 255, 255, 0.2);
@@ -453,7 +148,29 @@ header .container {
   transform: translateY(-1px);
 }
 
-/* Auth notice in hero section */
+/* ========================================
+   HERO SECTION
+   ======================================== */
+.hero {
+  background: #f8f9fa;
+  color: #212529;
+  padding: 4rem 0 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  color: #6c757d;
+  margin: 0 0 1.5rem 0;
+}
+
+/* Sign-in tip notice in hero */
 .auth-notice {
   padding: 12px 20px;
   background: rgba(255, 255, 255, 0.95);
@@ -465,8 +182,82 @@ header .container {
   color: #333;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
+/* Call-to-action button */
+.cta {
+  background: #28a745;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 0.375rem;
+  font-weight: bold;
+  font-size: 1.25rem;
+  display: inline-block;
+}
+
+.cta:hover {
+  background: #218838;
+}
+
+/* ========================================
+   COURSE CARDS GRID
+   ======================================== */
+/* Flexbox grid container - creates responsive card layout */
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Mobile-first: cards are full width by default */
+.card {
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 0.375rem;
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+  width: 100%;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+}
+
+.card h3 {
+  font-size: 1.25rem;
+  margin: 1rem 1rem 0.5rem 1rem;
+}
+
+.card p {
+  font-size: 1rem;
+  margin: 0 1rem 1rem 1rem;
+}
+
+.card p a {
+  background: #28a745;
+  color: #fff;
+  padding: 0.375rem 0.75rem;
+  text-decoration: none;
+  border-radius: 0.375rem;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.card p a:hover {
+  background: #218838;
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+/* Tablets and up: 2-column grid */
+@media (min-width: 768px) {
+  .card {
+    width: calc(50% - 10px);
+  }
+  
+  /* Stack header on smaller screens */
   header .container {
     flex-direction: column;
     align-items: flex-start;
@@ -489,10 +280,93 @@ header .container {
   }
 }
 
-/* Form message styling */
+/* Desktops: 3-column grid */
+@media (min-width: 992px) {
+  .card {
+    width: calc(33.333% - 13.33px);
+  }
+  
+  /* Restore horizontal header layout on desktop */
+  header .container {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .auth-section {
+    margin-left: auto;
+    width: auto;
+    margin-top: 0;
+  }
+  
+  .user-name {
+    font-size: 14px;
+  }
+  
+  .signin-btn {
+    width: auto;
+  }
+}
+
+/* ========================================
+   FORMS & OTHER SECTIONS
+   ======================================== */
+/* "Note" aside box styling */
+.note {
+  background: #e2e3e5;
+  border-left: 4px solid #084298;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0.375rem;
+}
+
+/* Form inputs styling */
+form input[type="text"],
+form input[type="email"],
+form textarea {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  margin-bottom: 1rem;
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+}
+
+form input[type="submit"] {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  background: #212529;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 0.375rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+form input[type="submit"]:hover {
+  background: #495057;
+}
+
+/* Contact form submission message */
 #formMessage {
   margin-top: 15px;
   padding: 10px;
   border-radius: 4px;
   font-weight: 500;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+footer {
+  background: #212529;
+  color: #dee2e6;
+  padding: 2.5rem 0;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: underline;
 }

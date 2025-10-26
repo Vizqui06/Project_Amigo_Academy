@@ -22,28 +22,10 @@ import dotenv from 'dotenv';
 const __filename = fileURLToPath(import.meta.url);
 // Extract the directory path from the filename - Used throughout the code to build paths to files (views, public, data folders)
 const __dirname = path.dirname(__filename);
-// Path to the credentials.env file - Used by dotenv to load environment variables
-const envPath = path.join(__dirname, 'credentials.env');
-
-/*
-// Check if credentials.env file exists and remove BOM if present - Prevents issues with dotenv parsing
-if (fs.existsSync(envPath)) {
-  // Read the raw contents of the credentials.env file
-  let raw = fs.readFileSync(envPath, 'utf8');
-  // Check if the first character is a BOM (Byte Order Mark)
-  if (raw.charCodeAt(0) === 0xFEFF) {
-    // Remove the BOM by slicing it off
-    raw = raw.slice(1);
-    // Write the cleaned content back to the credentials.env file
-    fs.writeFileSync(envPath, raw, 'utf8');
-    // Log to console that BOM was removed
-    console.log('credentials.env --> BOM removed automatically');
-  }
-}
-*/
-
-// Load environment variables from credentials.env file - Makes process.env.SESSION_SECRET, GOOGLE_CLIENT_ID, etc. available
-dotenv.config({ path: './credentials.env'});
+// Load environment variables from credentials.env file (local development only)
+// In production (Render), environment variables are set through the dashboard
+// The 'silent' option suppresses dotenv's informational messages
+dotenv.config({ path: './credentials.env', silent: true });
 
 // Create the Express application instance - This is the main server object that all routes and middleware attach to
 const app = express();
@@ -88,8 +70,6 @@ app.use(passport.session());
 // Define the Google OAuth callback URL - This must match the URL set in Google Cloud Console
 // In production (Render), this will use the production URL; in development, it uses localhost
 const CALLBACK_URL = process.env.GOOGLE_CALLBACK_URL || 'http://localhost:3000/auth/google/callback';
-// Log the callback URL for debugging purposes
-console.log('Server running on port 3000 URL = http://localhost:3000');
 
 /**
  * Configure Passport to use Google OAuth 2.0 strategy for authentication.
@@ -247,7 +227,6 @@ app.post("/contact", (req, res) => {
   // Initialize empty array to store messages
   let messages = [];
 
-
   // Check if messages.json already exists
   if (fs.existsSync(filePath)) {
     const fileData = fs.readFileSync(filePath, "utf8");
@@ -259,13 +238,10 @@ app.post("/contact", (req, res) => {
 
   // Write updated array back to file with formatting
   fs.writeFileSync(filePath, JSON.stringify(messages, null, 2));
-
-  console.log("New message:", newMessage);
   
   // Send success response to client
   res.json({ success: true, message: "Message received successfully!" });
 });
-
 
 /**
  * GET endpoint that renders a single course detail page.
@@ -313,5 +289,13 @@ app.get("/api/courses/:id", (req, res) => {
  * Starts the Express server and listens for incoming requests.
  */
 app.listen(PORT, () => {
-  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+  // Determine the base URL based on environment
+  // In production (Render), use the production domain
+  // In development, use localhost with the actual port
+  const baseURL = process.env.NODE_ENV === 'production' 
+    ? 'https://amigo-academy.onrender.com'
+    : `http://localhost:${PORT}`;
+  
+  console.log(`Server running on port ${PORT}`);
+  console.log(`URL = ${baseURL}`);
 });
