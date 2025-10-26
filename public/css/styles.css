@@ -364,3 +364,135 @@ footer a {
   color: #fff; 
   text-decoration: underline; /* Underline links in the footer */
 }
+
+/*
+  ==========================================
+  8. AUTHENTICATION STYLING
+  ==========================================
+*/
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Authentication section in header */
+.auth-section {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+/* Sign-in button styling */
+.signin-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: white;
+  color: #444;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.signin-btn:hover {
+  background: #f8f8f8;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+/* User info section when logged in */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+}
+
+/* User avatar image */
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid white;
+  object-fit: cover;
+}
+
+/* User name text */
+.user-name {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Logout button */
+.logout-btn {
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.logout-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Auth notice in hero section */
+.auth-notice {
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-left: 4px solid #4285F4;
+  border-radius: 4px;
+  margin: 20px auto;
+  max-width: 600px;
+  font-size: 15px;
+  color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  header .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .auth-section {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .user-name {
+    font-size: 13px;
+  }
+  
+  .signin-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Form message styling */
+#formMessage {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 4px;
+  font-weight: 500;
+}
