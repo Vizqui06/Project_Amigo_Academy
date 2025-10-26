@@ -130,6 +130,17 @@ app.use((req, res, next) => {
   next();
 });
 
+
+app.get('/test-session', (req, res) => {
+  req.session.test = 'working';
+  res.json({ 
+    sessionID: req.sessionID,
+    user: req.user,
+    test: req.session.test
+  });
+});
+
+
 /**
  * GET endpoint that renders the main page with courses.
  * This is the landing page that shows all courses and the sign-in option.
@@ -304,7 +315,7 @@ app.listen(PORT, () => {
   // In production (Render), use the production domain
   // In development, use localhost with the actual port
   const baseURL = process.env.NODE_ENV === 'production' 
-    ? 'https://amigo-academy.onrender.com'
+    ? 'https://project-amigo-academy.onrender.com'
     : `http://localhost:${PORT}`;
   
   console.log(`Server running on port ${PORT}`);
