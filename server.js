@@ -274,14 +274,19 @@ app.get("/course/:id", (req, res) => {
  * @route GET /api/courses/:id
  */
 app.get("/api/courses/:id", (req, res) => {
+  // Extract course ID from URL parameter
   const courseId = req.params.id;
+  // Build path to individual course JSON file
   const filePath = path.join(__dirname, "api", "courses", `${courseId}.json`);
 
+  // Check if course file exists
   if (!fs.existsSync(filePath)) {
+    // Retutn 404 Not Found error as JSON
     return res.status(404).json({ error: "Course not found." });
   }
-
+ // Read and parse course JSON file
   const course = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  // Send course data as JSON response
   res.json(course);
 });
 
@@ -292,10 +297,11 @@ app.listen(PORT, () => {
   // Determine the base URL based on environment
   // In production (Render), use the production domain
   // In development, use localhost with the actual port
-  const baseURL = process.env.NODE_ENV === 'production' 
-    ? 'https://amigo-academy.onrender.com'
-    : `http://localhost:${PORT}`;
+  // The base URL is logged for convenience, it is not used elsewhere in the code
+  const baseURL = process.env.NODE_ENV === 'production' ? 'https://amigo-academy.onrender.com': `http://localhost:${PORT}`;
   
   console.log(`Server running on port ${PORT}`);
-  console.log(`URL = ${baseURL}`);
+  console.log(`Local URL = ${baseURL}`);
+  console.log(`Render URL = https://amigo-academy.onrender.com`);
+  console.log(`Press CTRL+C to stop the server`);
 });
