@@ -18,58 +18,23 @@
         <a href="#contact">Contact</a>
       </nav>
       
-      <!-- 
-        AUTHENTICATION SECTION
-        This div displays different content based on whether a user is logged in.
-        The 'user' variable is automatically available because of the middleware
-        in server.js that sets res.locals.user = req.user
-      -->
       <div class="auth-section">
         <% if (user) { %>
-          <!-- 
-            USER IS LOGGED IN
-            This section only displays when req.user exists (user authenticated via Google).
-            It shows:
-            - User's profile picture (if available from Google)
-            - User's display name from their Google account
-            - A logout button to end the session
-          -->
           <div class="user-info">
-            <!-- Display user's Google profile picture if it exists -->
             <% if (user.picture) { %>
               <img src="<%= user.picture %>" alt="<%= user.name %>" class="user-avatar">
             <% } %>
-            <!-- Display personalized greeting with user's name from Google account -->
             <span class="user-name">Hello, <%= user.name %>!</span>
-            <!-- 
-              Logout link - when clicked:
-              1. Sends GET request to /logout route in server.js
-              2. Server calls req.logout() which destroys the session
-              3. User is redirected back to home page (now logged out)
-            -->
             <a href="/logout" class="logout-btn">Logout</a>
           </div>
         <% } else { %>
-          <!-- 
-            USER IS NOT LOGGED IN
-            This section displays when req.user is null/undefined.
-            Shows a "Sign in with Google" button that initiates OAuth flow.
-          -->
           <a href="/auth/google" class="signin-btn">
-            <!-- Google logo SVG for brand recognition -->
             <svg width="18" height="18" viewBox="0 0 18 18" style="vertical-align: middle; margin-right: 8px;">
               <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/>
               <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/>
               <path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707 0-.593.102-1.17.282-1.709V4.958H.957C.347 6.173 0 7.548 0 9s.348 2.827.957 4.042l3.007-2.335z"/>
               <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/>
             </svg>
-            <!-- 
-              When clicked, this link sends user to /auth/google route which:
-              1. Redirects to Google's consent screen
-              2. User authorizes the app
-              3. Google redirects back to /auth/google/callback
-              4. Server creates a session and logs user in
-            -->
             Sign in with Google
           </a>
         <% } %>
@@ -81,11 +46,6 @@
     <div class="container">
       <h1>Learn for free, at your own pace.</h1>
       <p>100% free educational platform inspired by online educational models like Khan Academy and Udemy.</p>
-      <!-- 
-        AUTHENTICATION NOTICE
-        This notice only appears when user is NOT logged in.
-        It encourages visitors to sign in to access progress tracking features.
-      -->
       <% if (!user) { %>
         <p class="auth-notice"><strong>Sign in with Google</strong> to save and track your learning progress!</p>
       <% } %>
@@ -101,11 +61,6 @@
       <hr>
     </section>
 
-    <!-- 
-      COURSES SECTION
-      This section loops through the 'courses' array passed from server.js
-      For each course object, it creates a card with image, title, description, and link
-    -->
     <section id="courses">
       <h2>Featured community courses:</h2>
       <div class="card-list">
@@ -134,11 +89,6 @@
       <hr>
     </section>
 
-    <!-- 
-      CONTACT FORM SECTION
-      This form now uses JavaScript to submit data without refreshing the page.
-      The form has an ID so JavaScript can find it and attach event listeners.
-    -->
     <section id="contact">
       <h2>Contact</h2>
       <form action="/contact" method="post" id="contactForm">
@@ -153,11 +103,6 @@
 
         <input type="submit" value="Send">
       </form>
-      <!-- 
-        MESSAGE DISPLAY DIV
-        This empty div will be filled by JavaScript to show success/error messages
-        after the form is submitted, without refreshing the page.
-      -->
       <div id="formMessage"></div>
     </section>
   </main>
@@ -169,15 +114,6 @@
     </div>
   </footer>
 
-  <!-- 
-    EXTERNAL JAVASCRIPT FILE
-    This loads the contact form handling script from a separate file.
-    Better practice than inline scripts for:
-    - Code organization and maintainability
-    - Browser caching (loads once, used on multiple pages)
-    - Easier debugging and testing
-    - Separation of concerns (HTML structure vs. JavaScript behavior)
-  -->
   <script src="/js/contact-form.js"></script>
 </body>
 </html>

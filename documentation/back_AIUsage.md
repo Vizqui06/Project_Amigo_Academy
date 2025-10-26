@@ -41,3 +41,16 @@ Then attached the "server.js" file or directly pasted the code or sections of th
 
 Some context first:
 When we started adding the courses/#.json files. Some of this information was already displayed in the index.html file, however it was displayed manually. When creating the route to the json files. AI suggested to change a section of the index.html file to display each of the courses by using a for each function that gathered information from the json files inside the courses folder. This change was implemented using AI. However most of the Text displayed was changed manually.
+
+
+3.- Correct "Sign up with Google" implementation.
+
+Some context first:
+We already had a Client service on Google Cloud and the basic env vars on Render (the secrets were given by Google in a JSON file after created the client service).
+When tested the function in local, it didn't worked, it send us to a blank page with an "cannot GET" error typed on the superior left corner & in the render page, 
+the sign up function wasn't there. 
+
+Now, AI helped us to manual redeploy, update env vars of Cloud, Render and our repo so finally avoid mismatching error, improve our CSS file to make a space on header
+so the Sign Up button could fit, created a JS file to improve (not fixed yet) the contact form and helped us commenting everything on server.js so debbugging can be 
+easier to do. After all these AI "helps", the localhost and Render pages still didn't work, so, reading real documentation, we founded the mistakes (silly ones) and finally get both pages working correctly. In fact, there were two main problems, unactualized URL in Render and Cloud and there was none emails put on Clients section
+to test, this means no one could use the sign up function because no one was registered to test it to do so. Now we are eliminating all debug line codes given by AI. 

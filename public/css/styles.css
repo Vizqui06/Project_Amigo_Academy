@@ -1,9 +1,5 @@
-/* ========================================
-   FONTS & GLOBAL STYLES
-   ======================================== */
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@700&display=swap');
 
-/* Border-box model for all elements - includes padding/border in width calculations */
 * {
   box-sizing: border-box;
 }
@@ -16,13 +12,11 @@ body {
   line-height: 1.6;
 }
 
-/* Serif font for headings and logo for professional look */
 h1, h2, h3, h4, h5, .logo {
   font-family: 'Merriweather', serif;
   font-weight: 700;
 }
 
-/* Main content wrapper - centers content and prevents it from getting too wide */
 .container {
   max-width: 960px;
   margin: 0 auto;
@@ -35,10 +29,7 @@ hr {
   margin: 2rem 0;
 }
 
-/* ========================================
-   HEADER (NAVBAR)
-   ======================================== */
-/* Sticky header - stays at top when scrolling */
+/* HEADER */
 header {
   background: #212529;
   color: #fff;
@@ -49,7 +40,6 @@ header {
   box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075);
 }
 
-/* Flexbox layout: logo on left, nav in middle, auth on right */
 header .container {
   display: flex;
   justify-content: space-between;
@@ -74,16 +64,13 @@ nav a:hover {
   color: #fff;
 }
 
-/* ========================================
-   AUTHENTICATION SECTION
-   ======================================== */
+/* AUTHENTICATION */
 .auth-section {
   display: flex;
   align-items: center;
   margin-left: auto;
 }
 
-/* Google sign-in button */
 .signin-btn {
   display: inline-flex;
   align-items: center;
@@ -105,7 +92,6 @@ nav a:hover {
   transform: translateY(-1px);
 }
 
-/* User info display when logged in */
 .user-info {
   display: flex;
   align-items: center;
@@ -148,9 +134,7 @@ nav a:hover {
   transform: translateY(-1px);
 }
 
-/* ========================================
-   HERO SECTION
-   ======================================== */
+/* HERO */
 .hero {
   background: #f8f9fa;
   color: #212529;
@@ -170,7 +154,6 @@ nav a:hover {
   margin: 0 0 1.5rem 0;
 }
 
-/* Sign-in tip notice in hero */
 .auth-notice {
   padding: 12px 20px;
   background: rgba(255, 255, 255, 0.95);
@@ -182,7 +165,6 @@ nav a:hover {
   color: #333;
 }
 
-/* Call-to-action button */
 .cta {
   background: #28a745;
   color: #fff;
@@ -198,17 +180,13 @@ nav a:hover {
   background: #218838;
 }
 
-/* ========================================
-   COURSE CARDS GRID
-   ======================================== */
-/* Flexbox grid container - creates responsive card layout */
+/* COURSE CARDS */
 .card-list {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
 
-/* Mobile-first: cards are full width by default */
 .card {
   background: #fff;
   border: 1px solid #dee2e6;
@@ -248,16 +226,12 @@ nav a:hover {
   background: #218838;
 }
 
-/* ========================================
-   RESPONSIVE BREAKPOINTS
-   ======================================== */
-/* Tablets and up: 2-column grid */
+/* RESPONSIVE */
 @media (min-width: 768px) {
   .card {
     width: calc(50% - 10px);
   }
   
-  /* Stack header on smaller screens */
   header .container {
     flex-direction: column;
     align-items: flex-start;
@@ -280,13 +254,11 @@ nav a:hover {
   }
 }
 
-/* Desktops: 3-column grid */
 @media (min-width: 992px) {
   .card {
     width: calc(33.333% - 13.33px);
   }
   
-  /* Restore horizontal header layout on desktop */
   header .container {
     flex-direction: row;
     align-items: center;
@@ -307,10 +279,7 @@ nav a:hover {
   }
 }
 
-/* ========================================
-   FORMS & OTHER SECTIONS
-   ======================================== */
-/* "Note" aside box styling */
+/* FORMS */
 .note {
   background: #e2e3e5;
   border-left: 4px solid #084298;
@@ -319,7 +288,6 @@ nav a:hover {
   border-radius: 0.375rem;
 }
 
-/* Form inputs styling */
 form input[type="text"],
 form input[type="email"],
 form textarea {
@@ -347,7 +315,6 @@ form input[type="submit"]:hover {
   background: #495057;
 }
 
-/* Contact form submission message */
 #formMessage {
   margin-top: 15px;
   padding: 10px;
@@ -355,9 +322,7 @@ form input[type="submit"]:hover {
   font-weight: 500;
 }
 
-/* ========================================
-   FOOTER
-   ======================================== */
+/* FOOTER */
 footer {
   background: #212529;
   color: #dee2e6;
