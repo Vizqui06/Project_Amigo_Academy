@@ -57,6 +57,10 @@ app.use(session({
   cookie: {
     // Use secure cookies in production (requires HTTPS)
     secure: process.env.NODE_ENV === 'production',
+    // HttpOnly prevents JavaScript access to cookies (security)
+    httpOnly: true,
+    // SameSite prevents CSRF attacks
+    sameSite: 'lax',
     // Set max age to 7 days (in milliseconds)
     maxAge: 7 * 24 * 60 * 60 * 1000
   }
@@ -180,9 +184,14 @@ app.get('/auth/google', passport.authenticate('google', {
  */
 app.get('/auth/google/callback',
   // passport.authenticate processes the authorization code and gets user profile
-  passport.authenticate('google', { failureRedirect: '/' }),
+  passport.authenticate('google', { 
+    failureRedirect: '/',
+    failureMessage: true 
+  }),
   // Success handler - Only runs if authentication succeeds
   (req, res) => {
+    // Log successful authentication (helps with debugging)
+    console.log('User authenticated successfully:', req.user?.email);
     // Redirect to home page - User is now logged in and req.user is available
     res.redirect('/');
   }
@@ -257,7 +266,6 @@ app.get("/course/:id", (req, res) => {
   
   // Check if course file exists
   if (!fs.existsSync(filePath)) {
-    // return 404 Not Found error
     return res.status(404).render("error", { message: "Course not found." });
   }
   
@@ -275,11 +283,8 @@ app.get("/course/:id", (req, res) => {
  * @route GET /api/courses/:id
  */
 app.get("/api/courses/:id", (req, res) => {
-  // Extract course ID from URL parameter
   const courseId = req.params.id;
-  // Build path to individual course JSON file
   const filePath = path.join(__dirname, "api", "courses", `${courseId}.json`);
-
   // Check if course file exists
   if (!fs.existsSync(filePath)) {
     // return 404 Not Found error
@@ -298,10 +303,12 @@ app.listen(PORT, () => {
   // Determine the base URL based on environment
   // In production (Render), use the production domain
   // In development, use localhost with the actual port
-  // The baseURL is logged to the console for reference
-  // This helps verify where the server is accessible
-  const baseURL = process.env.NODE_ENV === 'production' ? 'https://amigo-academy.onrender.com': `http://localhost:${PORT}`;
+  const baseURL = process.env.NODE_ENV === 'production' 
+    ? 'https://amigo-academy.onrender.com'
+    : `http://localhost:${PORT}`;
   
   console.log(`Server running on port ${PORT}`);
   console.log(`URL = ${baseURL}`);
+  console.log(`Render page = https://project-amigo-academy.onrender.com`)
+  console.log('Press CTRL+C to stop the server');
 });
