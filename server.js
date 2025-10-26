@@ -51,18 +51,15 @@ app.use(bodyParser.json());
 // Configure session middleware - Creates encrypted cookies to track user login state across requests
 // IMPORTANT: In production (Render), make sure to set SESSION_SECRET as an environment variable
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'fallback-secret-key-change-in-production', // Secret key from .env file, used to encrypt session data
-  resave: false, // Don't save session if unmodified - improves performance
-  saveUninitialized: false, // Don't create session until user logs in - saves storage space
+  secret: process.env.SESSION_SECRET || 'fallback-secret-key-change-in-production',
+  resave: false,
+  saveUninitialized: false,
+  proxy: true, // Trust the reverse proxy (required for Render)
   cookie: {
-    // Use secure cookies in production (requires HTTPS)
-    secure: process.env.NODE_ENV === 'production',
-    // HttpOnly prevents JavaScript access to cookies (security)
-    httpOnly: true,
-    // SameSite prevents CSRF attacks
-    sameSite: 'lax',
-    // Set max age to 7 days (in milliseconds)
-    maxAge: 7 * 24 * 60 * 60 * 1000
+    secure: process.env.NODE_ENV === 'production', // HTTPS only in production
+    httpOnly: true, // Prevent JavaScript access
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // Required for cross-site cookies
+    maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
   }
 }));
 
@@ -127,19 +124,14 @@ passport.deserializeUser((user, done) => {
 app.use((req, res, next) => {
   // Make req.user available as 'user' variable in all EJS templates
   res.locals.user = req.user || null;
+  
+  // Debug logging for development (only logs when user exists)
+  if (req.user && process.env.NODE_ENV !== 'production') {
+    console.log('Current user:', req.user.email);
+  }
+  
   next();
 });
-
-
-app.get('/test-session', (req, res) => {
-  req.session.test = 'working';
-  res.json({ 
-    sessionID: req.sessionID,
-    user: req.user,
-    test: req.session.test
-  });
-});
-
 
 /**
  * GET endpoint that renders the main page with courses.
@@ -177,6 +169,27 @@ app.get("/courses", (req, res) => {
 });
 
 /**
+ * DEBUG ROUTE - Remove this after authentication is working
+ * Test if sessions are working properly
+ * 
+ * @route GET /debug-session
+ */
+app.get('/debug-session', (req, res) => {
+  res.json({
+    hasUser: !!req.user,
+    user: req.user || null,
+    sessionID: req.sessionID,
+    session: req.session,
+    environment: process.env.NODE_ENV || 'development',
+    cookieSettings: {
+      secure: req.session.cookie.secure,
+      httpOnly: req.session.cookie.httpOnly,
+      sameSite: req.session.cookie.sameSite
+    }
+  });
+});
+
+/**
  * GET endpoint that initiates Google OAuth authentication flow.
  * Redirects user to Google's consent screen to authorize the application.
  * 
@@ -194,16 +207,16 @@ app.get('/auth/google', passport.authenticate('google', {
  * @route GET /auth/google/callback
  */
 app.get('/auth/google/callback',
-  // passport.authenticate processes the authorization code and gets user profile
   passport.authenticate('google', { 
     failureRedirect: '/',
     failureMessage: true 
   }),
-  // Success handler - Only runs if authentication succeeds
   (req, res) => {
-    // Log successful authentication (helps with debugging)
-    console.log('User authenticated successfully:', req.user?.email);
-    // Redirect to home page - User is now logged in and req.user is available
+    // Log successful authentication
+    console.log('✓ User authenticated:', req.user?.email || 'unknown');
+    console.log('✓ Session ID:', req.sessionID);
+    
+    // Redirect to home page
     res.redirect('/');
   }
 );
@@ -286,7 +299,6 @@ app.get("/course/:id", (req, res) => {
   // User object is automatically available via res.locals.user
   res.render("course", { course });
 });
-
 /**
  * API endpoint that returns raw JSON data for a specific course.
  * Used for programmatic access to course information.
